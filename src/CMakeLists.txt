@@ -1,0 +1,9 @@
+add_library(ml_framework
+    tensor.cpp
+    autograd.cpp
+    module.cpp
+    linear.cpp
+    relu.cpp
+    mse_loss.cpp
+    utils.cpp
+)

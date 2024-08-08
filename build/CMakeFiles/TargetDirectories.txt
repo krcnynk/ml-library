@@ -1,0 +1,14 @@
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles/test.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/src/CMakeFiles/ml_framework.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/src/CMakeFiles/test.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/src/CMakeFiles/edit_cache.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/src/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/test_tensor.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/test_autograd.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/test_module.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/test_linear.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/test.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/edit_cache.dir
+/mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests/CMakeFiles/rebuild_cache.dir
