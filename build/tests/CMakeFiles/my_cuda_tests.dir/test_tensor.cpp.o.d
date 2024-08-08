@@ -334,6 +334,7 @@ tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o: \
   /usr/include/gtest/gtest_prod.h /usr/include/gtest/gtest-typed-test.h \
   /usr/include/gtest/gtest_pred_impl.h \
   /mnt/c/Users/korca/Desktop/Gits/ml-library/include/ml_framework/tensor.h \
+  /mnt/c/Users/korca/Desktop/Gits/ml-library/include/ml_framework/suppress_warnings.h \
   /usr/include/eigen3/Eigen/Dense /usr/include/eigen3/Eigen/Core \
   /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   /usr/include/eigen3/Eigen/src/Core/util/Macros.h \

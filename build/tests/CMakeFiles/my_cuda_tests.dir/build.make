@@ -143,6 +143,8 @@ tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/build.make
 tests/my_cuda_tests: src/libml_framework.a
 tests/my_cuda_tests: /usr/lib/x86_64-linux-gnu/libgtest_main.a
 tests/my_cuda_tests: /usr/lib/x86_64-linux-gnu/libgtest.a
+tests/my_cuda_tests: /usr/lib/x86_64-linux-gnu/libcudart.so
+tests/my_cuda_tests: /usr/lib/x86_64-linux-gnu/libcublas.so
 tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable my_cuda_tests"
 	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/my_cuda_tests.dir/link.txt --verbose=$(VERBOSE)

@@ -9,7 +9,7 @@ add_library(ml_framework STATIC
 )
 
 # Link CUDA libraries
-target_link_libraries(ml_framework PRIVATE CUDA::cudart)
+target_link_libraries(ml_framework PRIVATE CUDA::cudart CUDA::cublas)
 # Link Eigen
 target_link_libraries(ml_framework PRIVATE Eigen3::Eigen)
 

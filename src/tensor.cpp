@@ -93,16 +93,16 @@ namespace ml_framework
         float *d_other_data = nullptr;
         float *d_result = nullptr;
 
-        cudaMalloc(&d_other_data, other._data.size() * sizeof(float));
-        cudaMalloc(&d_result, result._data.size() * sizeof(float));
+        cudaMalloc(&d_other_data, static_cast<unsigned long>(other._data.size()) * sizeof(float));
+        cudaMalloc(&d_result, static_cast<unsigned long>(result._data.size()) * sizeof(float));
 
         cublasSetPointerMode(cublas_handle, CUBLAS_POINTER_MODE_HOST);
-        cudaMemcpy(d_other_data, other._data.data(), other._data.size() * sizeof(float), cudaMemcpyHostToDevice);
+        cudaMemcpy(d_other_data, other._data.data(), static_cast<unsigned long>(other._data.size()) * sizeof(float), cudaMemcpyHostToDevice);
 
         cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, m, n, k, &alpha,
                     d_data, m, d_other_data, k, &beta, d_result, m);
 
-        cudaMemcpy(result._data.data(), d_result, result._data.size() * sizeof(float), cudaMemcpyDeviceToHost);
+        cudaMemcpy(result._data.data(), d_result, static_cast<unsigned long>(result._data.size()) * sizeof(float), cudaMemcpyDeviceToHost);
 
         cudaFree(d_other_data);
         cudaFree(d_result);
@@ -114,7 +114,7 @@ namespace ml_framework
     {
         if (d_data == nullptr)
         {
-            cudaMalloc((void**)&d_data, _data.size() * sizeof(float));
+            cudaMalloc((void**)&d_data, static_cast<unsigned long>(_data.size()) * sizeof(float));
             transferDataToDevice();
         }
     }
@@ -132,7 +132,7 @@ namespace ml_framework
     {
         if (d_data != nullptr)
         {
-            cudaMemcpy(d_data, _data.data(), _data.size() * sizeof(float), cudaMemcpyHostToDevice);
+            cudaMemcpy(d_data, _data.data(), static_cast<unsigned long>(_data.size()) * sizeof(float), cudaMemcpyHostToDevice);
         }
     }
 
@@ -140,7 +140,7 @@ namespace ml_framework
     {
         if (d_data != nullptr)
         {
-            cudaMemcpy(d_data, d_data, _data.size() * sizeof(float), cudaMemcpyDeviceToHost);
+            cudaMemcpy(d_data, d_data, static_cast<unsigned long>(_data.size()) * sizeof(float), cudaMemcpyDeviceToHost);
         }
     }
 

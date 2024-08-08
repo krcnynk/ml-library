@@ -9,7 +9,7 @@ add_compile_options(${MY_DEBUG_OPTIONS})
 
 # Find Eigen
 find_package(Eigen3 3.3 REQUIRED)  # You can specify the minimum required version of Eigen
-find_package(CUDA REQUIRED)
+find_package(CUDAToolkit REQUIRED)
 find_package(GTest REQUIRED)
 
 #message(STATUS "Available CUDA targets:")

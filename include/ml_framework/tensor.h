@@ -1,7 +1,10 @@
 #ifndef TENSOR_H
 #define TENSOR_H
 
+#include "suppress_warnings.h"
+SUPPRESS_SIGN_CONVERSION_WARNINGS
 #include <Eigen/Dense>
+RESTORE_WARNINGS
 #include <cublas_v2.h>
 
 namespace ml_framework
