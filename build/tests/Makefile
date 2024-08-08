@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /mnt/c/Users/korca/Desktop/Gits/ml-library/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -127,67 +117,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-tests/CMakeFiles/test_tensor.dir/rule:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/test_tensor.dir/rule
-.PHONY : tests/CMakeFiles/test_tensor.dir/rule
+tests/CMakeFiles/my_cuda_tests.dir/rule:
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/my_cuda_tests.dir/rule
+.PHONY : tests/CMakeFiles/my_cuda_tests.dir/rule
 
 # Convenience name for target.
-test_tensor: tests/CMakeFiles/test_tensor.dir/rule
-.PHONY : test_tensor
+my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/rule
+.PHONY : my_cuda_tests
 
 # fast build rule for target.
-test_tensor/fast:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_tensor.dir/build.make tests/CMakeFiles/test_tensor.dir/build
-.PHONY : test_tensor/fast
-
-# Convenience name for target.
-tests/CMakeFiles/test_autograd.dir/rule:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/test_autograd.dir/rule
-.PHONY : tests/CMakeFiles/test_autograd.dir/rule
-
-# Convenience name for target.
-test_autograd: tests/CMakeFiles/test_autograd.dir/rule
-.PHONY : test_autograd
-
-# fast build rule for target.
-test_autograd/fast:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_autograd.dir/build.make tests/CMakeFiles/test_autograd.dir/build
-.PHONY : test_autograd/fast
-
-# Convenience name for target.
-tests/CMakeFiles/test_module.dir/rule:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/test_module.dir/rule
-.PHONY : tests/CMakeFiles/test_module.dir/rule
-
-# Convenience name for target.
-test_module: tests/CMakeFiles/test_module.dir/rule
-.PHONY : test_module
-
-# fast build rule for target.
-test_module/fast:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_module.dir/build.make tests/CMakeFiles/test_module.dir/build
-.PHONY : test_module/fast
-
-# Convenience name for target.
-tests/CMakeFiles/test_linear.dir/rule:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/test_linear.dir/rule
-.PHONY : tests/CMakeFiles/test_linear.dir/rule
-
-# Convenience name for target.
-test_linear: tests/CMakeFiles/test_linear.dir/rule
-.PHONY : test_linear
-
-# fast build rule for target.
-test_linear/fast:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_linear.dir/build.make tests/CMakeFiles/test_linear.dir/build
-.PHONY : test_linear/fast
+my_cuda_tests/fast:
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/build
+.PHONY : my_cuda_tests/fast
 
 test_autograd.o: test_autograd.cpp.o
 .PHONY : test_autograd.o
 
 # target to build an object file
 test_autograd.cpp.o:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_autograd.dir/build.make tests/CMakeFiles/test_autograd.dir/test_autograd.cpp.o
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o
 .PHONY : test_autograd.cpp.o
 
 test_autograd.i: test_autograd.cpp.i
@@ -195,7 +143,7 @@ test_autograd.i: test_autograd.cpp.i
 
 # target to preprocess a source file
 test_autograd.cpp.i:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_autograd.dir/build.make tests/CMakeFiles/test_autograd.dir/test_autograd.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i
 .PHONY : test_autograd.cpp.i
 
 test_autograd.s: test_autograd.cpp.s
@@ -203,7 +151,7 @@ test_autograd.s: test_autograd.cpp.s
 
 # target to generate assembly for a file
 test_autograd.cpp.s:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_autograd.dir/build.make tests/CMakeFiles/test_autograd.dir/test_autograd.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s
 .PHONY : test_autograd.cpp.s
 
 test_linear.o: test_linear.cpp.o
@@ -211,7 +159,7 @@ test_linear.o: test_linear.cpp.o
 
 # target to build an object file
 test_linear.cpp.o:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_linear.dir/build.make tests/CMakeFiles/test_linear.dir/test_linear.cpp.o
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o
 .PHONY : test_linear.cpp.o
 
 test_linear.i: test_linear.cpp.i
@@ -219,7 +167,7 @@ test_linear.i: test_linear.cpp.i
 
 # target to preprocess a source file
 test_linear.cpp.i:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_linear.dir/build.make tests/CMakeFiles/test_linear.dir/test_linear.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i
 .PHONY : test_linear.cpp.i
 
 test_linear.s: test_linear.cpp.s
@@ -227,7 +175,7 @@ test_linear.s: test_linear.cpp.s
 
 # target to generate assembly for a file
 test_linear.cpp.s:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_linear.dir/build.make tests/CMakeFiles/test_linear.dir/test_linear.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s
 .PHONY : test_linear.cpp.s
 
 test_module.o: test_module.cpp.o
@@ -235,7 +183,7 @@ test_module.o: test_module.cpp.o
 
 # target to build an object file
 test_module.cpp.o:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_module.dir/build.make tests/CMakeFiles/test_module.dir/test_module.cpp.o
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o
 .PHONY : test_module.cpp.o
 
 test_module.i: test_module.cpp.i
@@ -243,7 +191,7 @@ test_module.i: test_module.cpp.i
 
 # target to preprocess a source file
 test_module.cpp.i:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_module.dir/build.make tests/CMakeFiles/test_module.dir/test_module.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.i
 .PHONY : test_module.cpp.i
 
 test_module.s: test_module.cpp.s
@@ -251,7 +199,7 @@ test_module.s: test_module.cpp.s
 
 # target to generate assembly for a file
 test_module.cpp.s:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_module.dir/build.make tests/CMakeFiles/test_module.dir/test_module.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.s
 .PHONY : test_module.cpp.s
 
 test_tensor.o: test_tensor.cpp.o
@@ -259,7 +207,7 @@ test_tensor.o: test_tensor.cpp.o
 
 # target to build an object file
 test_tensor.cpp.o:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_tensor.dir/build.make tests/CMakeFiles/test_tensor.dir/test_tensor.cpp.o
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o
 .PHONY : test_tensor.cpp.o
 
 test_tensor.i: test_tensor.cpp.i
@@ -267,7 +215,7 @@ test_tensor.i: test_tensor.cpp.i
 
 # target to preprocess a source file
 test_tensor.cpp.i:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_tensor.dir/build.make tests/CMakeFiles/test_tensor.dir/test_tensor.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.i
 .PHONY : test_tensor.cpp.i
 
 test_tensor.s: test_tensor.cpp.s
@@ -275,7 +223,7 @@ test_tensor.s: test_tensor.cpp.s
 
 # target to generate assembly for a file
 test_tensor.cpp.s:
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_tensor.dir/build.make tests/CMakeFiles/test_tensor.dir/test_tensor.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s
 .PHONY : test_tensor.cpp.s
 
 # Help Target
@@ -286,11 +234,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... test_autograd"
-	@echo "... test_linear"
-	@echo "... test_module"
-	@echo "... test_tensor"
+	@echo "... my_cuda_tests"
 	@echo "... test_autograd.o"
 	@echo "... test_autograd.i"
 	@echo "... test_autograd.s"

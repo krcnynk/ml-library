@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /mnt/c/Users/korca/Desktop/Gits/ml-library/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -140,56 +130,17 @@ ml_framework/fast:
 .PHONY : ml_framework/fast
 
 #=============================================================================
-# Target rules for targets named test_tensor
+# Target rules for targets named my_cuda_tests
 
 # Build rule for target.
-test_tensor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_tensor
-.PHONY : test_tensor
+my_cuda_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_cuda_tests
+.PHONY : my_cuda_tests
 
 # fast build rule for target.
-test_tensor/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_tensor.dir/build.make tests/CMakeFiles/test_tensor.dir/build
-.PHONY : test_tensor/fast
-
-#=============================================================================
-# Target rules for targets named test_autograd
-
-# Build rule for target.
-test_autograd: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_autograd
-.PHONY : test_autograd
-
-# fast build rule for target.
-test_autograd/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_autograd.dir/build.make tests/CMakeFiles/test_autograd.dir/build
-.PHONY : test_autograd/fast
-
-#=============================================================================
-# Target rules for targets named test_module
-
-# Build rule for target.
-test_module: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_module
-.PHONY : test_module
-
-# fast build rule for target.
-test_module/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_module.dir/build.make tests/CMakeFiles/test_module.dir/build
-.PHONY : test_module/fast
-
-#=============================================================================
-# Target rules for targets named test_linear
-
-# Build rule for target.
-test_linear: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_linear
-.PHONY : test_linear
-
-# fast build rule for target.
-test_linear/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_linear.dir/build.make tests/CMakeFiles/test_linear.dir/build
-.PHONY : test_linear/fast
+my_cuda_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/build
+.PHONY : my_cuda_tests/fast
 
 # Help Target
 help:
@@ -199,12 +150,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... ml_framework"
-	@echo "... test_autograd"
-	@echo "... test_linear"
-	@echo "... test_module"
-	@echo "... test_tensor"
+	@echo "... my_cuda_tests"
 .PHONY : help
 
 

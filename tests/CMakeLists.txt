@@ -1,16 +1,17 @@
-add_executable(test_tensor test_tensor.cpp)
-target_link_libraries(test_tensor ml_framework GTest::GTest GTest::Main)
+# Add test source files
+set(TEST_SOURCES
+    test_tensor.cpp
+    test_linear.cpp
+    test_module.cpp
+    test_autograd.cpp
+    # Add more test files here
+)
 
-add_executable(test_autograd test_autograd.cpp)
-target_link_libraries(test_autograd ml_framework GTest::GTest GTest::Main)
+# Create test executable
+add_executable(my_cuda_tests ${TEST_SOURCES})
 
-add_executable(test_module test_module.cpp)
-target_link_libraries(test_module ml_framework GTest::GTest GTest::Main)
+# Link Google Test
+target_link_libraries(my_cuda_tests PRIVATE GTest::GTest GTest::Main)
 
-add_executable(test_linear test_linear.cpp)
-target_link_libraries(test_linear ml_framework GTest::GTest GTest::Main)
-
-add_test(NAME TensorTest COMMAND test_tensor)
-add_test(NAME AutogradTest COMMAND test_autograd)
-add_test(NAME ModuleTest COMMAND test_module)
-add_test(NAME LinearTest COMMAND test_linear)
+# Link the library
+target_link_libraries(my_cuda_tests PRIVATE ml_framework)

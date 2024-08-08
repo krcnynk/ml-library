@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Users/korca/Desktop/Gits/ml-library/include -I/usr/include/gtest
+CXX_INCLUDES = -I/mnt/c/Users/korca/Desktop/Gits/ml-library/include -isystem /usr/include/eigen3
 
-CXX_FLAGS = -g -std=c++2b
+CXX_FLAGS = -g -ggdb -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -std=c++2b
 

@@ -1,4 +1,4 @@
-add_library(ml_framework
+add_library(ml_framework STATIC
     tensor.cpp
     autograd.cpp
     module.cpp
@@ -7,3 +7,12 @@ add_library(ml_framework
     mse_loss.cpp
     utils.cpp
 )
+
+# Link CUDA libraries
+target_link_libraries(ml_framework PRIVATE CUDA::cudart)
+# Link Eigen
+target_link_libraries(ml_framework PRIVATE Eigen3::Eigen)
+
+# Include directories for Eigen and any other headers
+# target_include_directories(ml_framework PRIVATE ${EIGEN3_INCLUDE_DIR})
+# target_include_directories(ml_framework PRIVATE ${CUDA_INCLUDE_DIRS})

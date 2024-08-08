@@ -1,1 +1,0 @@
-/usr/bin/clang++ -g CMakeFiles/test_linear.dir/test_linear.cpp.o -o test_linear  ../src/libml_framework.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a 

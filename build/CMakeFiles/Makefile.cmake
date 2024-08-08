@@ -9,6 +9,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "../CMakeLists.txt"
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
+  "CMakeFiles/3.22.1/CMakeCUDACompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
   "../src/CMakeLists.txt"
@@ -18,6 +19,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCInformation.cmake"
+  "/usr/share/cmake-3.22/Modules/CMakeCUDAInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake"
@@ -34,6 +36,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/Compiler/Clang.cmake"
   "/usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.22/Modules/Compiler/GNU.cmake"
+  "/usr/share/cmake-3.22/Modules/Compiler/NVIDIA-CUDA.cmake"
+  "/usr/share/cmake-3.22/Modules/FindCUDA.cmake"
+  "/usr/share/cmake-3.22/Modules/FindCUDA/select_compute_arch.cmake"
   "/usr/share/cmake-3.22/Modules/FindGTest.cmake"
   "/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake"
@@ -46,6 +51,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Linux.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake"
+  "/usr/share/eigen3/cmake/Eigen3Config.cmake"
+  "/usr/share/eigen3/cmake/Eigen3ConfigVersion.cmake"
+  "/usr/share/eigen3/cmake/Eigen3Targets.cmake"
   )
 
 # The corresponding makefile is:
@@ -64,8 +72,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/ml_framework.dir/DependInfo.cmake"
-  "tests/CMakeFiles/test_tensor.dir/DependInfo.cmake"
-  "tests/CMakeFiles/test_autograd.dir/DependInfo.cmake"
-  "tests/CMakeFiles/test_module.dir/DependInfo.cmake"
-  "tests/CMakeFiles/test_linear.dir/DependInfo.cmake"
+  "tests/CMakeFiles/my_cuda_tests.dir/DependInfo.cmake"
   )

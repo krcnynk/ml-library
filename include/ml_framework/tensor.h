@@ -1,63 +1,57 @@
-#ifndef ML_FRAMEWORK_TENSOR_H
-#define ML_FRAMEWORK_TENSOR_H
+#ifndef TENSOR_H
+#define TENSOR_H
 
-#include <vector>
-#include <memory>
+#include <Eigen/Dense>
+#include <cublas_v2.h>
 
 namespace ml_framework
 {
-
-  template <typename T>
-  struct AlignedAllocator;
-
-  using AlignedFloatAllocator = AlignedAllocator<float>;
-  using AlignedIntAllocator = AlignedAllocator<int>;
-
-  template <typename T>
-  struct AlignedAllocator
-  {
-    using value_type = T;
-
-    AlignedAllocator() noexcept = default;
-
-    template <typename U>
-    AlignedAllocator(const AlignedAllocator<U> &) noexcept {}
-
-    T *allocate(std::size_t n)
+    class Tensor
     {
-      void *ptr = nullptr;
-      if (posix_memalign(&ptr, 64, n * sizeof(T)) != 0)
-      {
-        throw std::bad_alloc();
-      }
-      return static_cast<T *>(ptr);
-    }
+    public:
+        // Constructor to initialize tensor with shape
+        Tensor(const Eigen::VectorXi &shape);
 
-    void deallocate(T *ptr, std::size_t) noexcept
-    {
-      std::free(ptr);
-    }
-  };
+        // Constructor to initialize tensor with shape and data
+        Tensor(const Eigen::VectorXi &shape, const Eigen::VectorXf &data);
 
-  class Tensor
-  {
-  public:
-    Tensor(const std::vector<int> &shape);
-    Tensor(const std::vector<int> &shape, const std::vector<float> &data);
+        // Getter for shape
+        const Eigen::VectorXi &shape() const;
 
-    const std::vector<int> &shape() const;
-    const std::vector<float> &data() const;
-    // will return read only, and can be called on const objects
-    float *data();
+        // Getter for data
+        const Eigen::VectorXf &data() const;
 
-    Tensor operator+(const Tensor &other);
-    Tensor operator*(const Tensor &other);
+        // Getter for data (non-const)
+        Eigen::VectorXf &data();
 
-  private:
-    std::vector<int> _shape;
-    std::vector<float> _data;
-  };
+        // Overload + operator
+        Tensor operator+(const Tensor &other) const;
 
+        // Overload * operator (element-wise multiplication)
+        Tensor operator*(const Tensor &other) const;
+
+        // Matrix multiplication using cuBLAS
+        Tensor matmul(const Tensor &other) const;
+
+        // Cleanup CUDA resources
+        ~Tensor();
+
+    private:
+        Eigen::VectorXi _shape; // Shape of the tensor (e.g., dimensions)
+        Eigen::VectorXf _data;  // Data storage (flattened)
+
+        // CUDA resources
+        mutable float *d_data = nullptr; // Device pointer for data
+        static cublasHandle_t cublas_handle; // cuBLAS handle
+
+        // Helper functions
+        void allocateDeviceMemory() const;
+        void freeDeviceMemory() const;
+        void transferDataToDevice() const;
+        void transferDataToHost() const;
+        static void initializeCuBLAS();
+        static void cleanupCuBLAS();
+    };
 }
 
-#endif
+#endif // TENSOR_H
