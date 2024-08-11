@@ -3,29 +3,31 @@
 
 #include "suppress_warnings.h"
 SUPPRESS_SIGN_CONVERSION_WARNINGS
-#include <Eigen/Dense>
 RESTORE_WARNINGS
 #include <cublas_v2.h>
+#include <vector>
 
-namespace ml_framework
+using custom_type = float;
+
+    namespace ml_framework
 {
     class Tensor
     {
     public:
         // Constructor to initialize tensor with shape
-        Tensor(const Eigen::VectorXi &shape);
+        Tensor(const std::vector<size_t> &shape);
 
         // Constructor to initialize tensor with shape and data
-        Tensor(const Eigen::VectorXi &shape, const Eigen::VectorXf &data);
+        Tensor(const std::vector<size_t> &shape, const custom_type *data);
 
         // Getter for shape
-        const Eigen::VectorXi &shape() const;
+        const std::vector<size_t> &shape() const;
 
         // Getter for data
-        const Eigen::VectorXf &data() const;
+        const custom_type *data() const;
 
         // Getter for data (non-const)
-        Eigen::VectorXf &data();
+        custom_type *data();
 
         // Overload + operator
         Tensor operator+(const Tensor &other) const;
@@ -40,11 +42,12 @@ namespace ml_framework
         ~Tensor();
 
     private:
-        Eigen::VectorXi _shape; // Shape of the tensor (e.g., dimensions)
-        Eigen::VectorXf _data;  // Data storage (flattened)
+        std::vector<size_t> _shape; // Shape of the tensor (e.g., dimensions)
+        size_t _data_size;
+        custom_type *_data;              // Data storage (flattened)
 
         // CUDA resources
-        mutable float *d_data = nullptr; // Device pointer for data
+        mutable float *d_data = nullptr;     // Device pointer for data
         static cublasHandle_t cublas_handle; // cuBLAS handle
 
         // Helper functions

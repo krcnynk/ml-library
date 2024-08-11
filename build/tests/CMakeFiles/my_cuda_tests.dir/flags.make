@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/eigen3 -I/mnt/c/Users/korca/Desktop/Gits/ml-library/include
+CXX_INCLUDES = -I/usr/include/eigen3 -I/mnt/c/Users/korca/Desktop/Gits/ml-library/include/ml_framework
 
-CXX_FLAGS = -g -ggdb -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -DGTEST_HAS_PTHREAD=1 -std=c++2b
+CXX_FLAGS = -g -gdwarf-4 -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -DGTEST_HAS_PTHREAD=1 -std=c++2b
 

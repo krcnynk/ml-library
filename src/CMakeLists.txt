@@ -8,6 +8,10 @@ add_library(ml_framework STATIC
     utils.cpp
 )
 
+target_include_directories(ml_framework PRIVATE
+    ${CMAKE_SOURCE_DIR}/include/ml_framework  # Path to the headers
+)
+
 # Link CUDA libraries
 target_link_libraries(ml_framework PRIVATE CUDA::cudart CUDA::cublas)
 # Link Eigen

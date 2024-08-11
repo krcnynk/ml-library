@@ -10,8 +10,8 @@ set(TEST_SOURCES
 # Create test executable
 add_executable(my_cuda_tests ${TEST_SOURCES})
 
-# Link Google Test
-target_link_libraries(my_cuda_tests PRIVATE GTest::GTest GTest::Main)
+
+target_link_libraries(my_cuda_tests PRIVATE ml_framework GTest::gtest_main)
 
 # Link the library
-target_link_libraries(my_cuda_tests PRIVATE ml_framework)
+# target_link_libraries(my_cuda_tests PRIVATE ml_framework)
