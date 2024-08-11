@@ -73,99 +73,99 @@ src/CMakeFiles/ml_framework.dir/tensor.cpp.o: src/CMakeFiles/ml_framework.dir/fl
 src/CMakeFiles/ml_framework.dir/tensor.cpp.o: ../src/tensor.cpp
 src/CMakeFiles/ml_framework.dir/tensor.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/ml_framework.dir/tensor.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/tensor.cpp.o -MF CMakeFiles/ml_framework.dir/tensor.cpp.o.d -o CMakeFiles/ml_framework.dir/tensor.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/tensor.cpp.o -MF CMakeFiles/ml_framework.dir/tensor.cpp.o.d -o CMakeFiles/ml_framework.dir/tensor.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp
 
 src/CMakeFiles/ml_framework.dir/tensor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/tensor.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp > CMakeFiles/ml_framework.dir/tensor.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp > CMakeFiles/ml_framework.dir/tensor.cpp.i
 
 src/CMakeFiles/ml_framework.dir/tensor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/tensor.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp -o CMakeFiles/ml_framework.dir/tensor.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/tensor.cpp -o CMakeFiles/ml_framework.dir/tensor.cpp.s
 
 src/CMakeFiles/ml_framework.dir/autograd.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/autograd.cpp.o: ../src/autograd.cpp
 src/CMakeFiles/ml_framework.dir/autograd.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/ml_framework.dir/autograd.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/autograd.cpp.o -MF CMakeFiles/ml_framework.dir/autograd.cpp.o.d -o CMakeFiles/ml_framework.dir/autograd.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/autograd.cpp.o -MF CMakeFiles/ml_framework.dir/autograd.cpp.o.d -o CMakeFiles/ml_framework.dir/autograd.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp
 
 src/CMakeFiles/ml_framework.dir/autograd.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/autograd.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp > CMakeFiles/ml_framework.dir/autograd.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp > CMakeFiles/ml_framework.dir/autograd.cpp.i
 
 src/CMakeFiles/ml_framework.dir/autograd.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/autograd.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp -o CMakeFiles/ml_framework.dir/autograd.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp -o CMakeFiles/ml_framework.dir/autograd.cpp.s
 
 src/CMakeFiles/ml_framework.dir/module.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/module.cpp.o: ../src/module.cpp
 src/CMakeFiles/ml_framework.dir/module.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/ml_framework.dir/module.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/module.cpp.o -MF CMakeFiles/ml_framework.dir/module.cpp.o.d -o CMakeFiles/ml_framework.dir/module.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/module.cpp.o -MF CMakeFiles/ml_framework.dir/module.cpp.o.d -o CMakeFiles/ml_framework.dir/module.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp
 
 src/CMakeFiles/ml_framework.dir/module.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/module.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp > CMakeFiles/ml_framework.dir/module.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp > CMakeFiles/ml_framework.dir/module.cpp.i
 
 src/CMakeFiles/ml_framework.dir/module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/module.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp -o CMakeFiles/ml_framework.dir/module.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/module.cpp -o CMakeFiles/ml_framework.dir/module.cpp.s
 
 src/CMakeFiles/ml_framework.dir/linear.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/linear.cpp.o: ../src/linear.cpp
 src/CMakeFiles/ml_framework.dir/linear.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/ml_framework.dir/linear.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/linear.cpp.o -MF CMakeFiles/ml_framework.dir/linear.cpp.o.d -o CMakeFiles/ml_framework.dir/linear.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/linear.cpp.o -MF CMakeFiles/ml_framework.dir/linear.cpp.o.d -o CMakeFiles/ml_framework.dir/linear.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp
 
 src/CMakeFiles/ml_framework.dir/linear.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/linear.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp > CMakeFiles/ml_framework.dir/linear.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp > CMakeFiles/ml_framework.dir/linear.cpp.i
 
 src/CMakeFiles/ml_framework.dir/linear.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/linear.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp -o CMakeFiles/ml_framework.dir/linear.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp -o CMakeFiles/ml_framework.dir/linear.cpp.s
 
 src/CMakeFiles/ml_framework.dir/relu.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/relu.cpp.o: ../src/relu.cpp
 src/CMakeFiles/ml_framework.dir/relu.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/ml_framework.dir/relu.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/relu.cpp.o -MF CMakeFiles/ml_framework.dir/relu.cpp.o.d -o CMakeFiles/ml_framework.dir/relu.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/relu.cpp.o -MF CMakeFiles/ml_framework.dir/relu.cpp.o.d -o CMakeFiles/ml_framework.dir/relu.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp
 
 src/CMakeFiles/ml_framework.dir/relu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/relu.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp > CMakeFiles/ml_framework.dir/relu.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp > CMakeFiles/ml_framework.dir/relu.cpp.i
 
 src/CMakeFiles/ml_framework.dir/relu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/relu.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp -o CMakeFiles/ml_framework.dir/relu.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/relu.cpp -o CMakeFiles/ml_framework.dir/relu.cpp.s
 
 src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o: ../src/mse_loss.cpp
 src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o -MF CMakeFiles/ml_framework.dir/mse_loss.cpp.o.d -o CMakeFiles/ml_framework.dir/mse_loss.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o -MF CMakeFiles/ml_framework.dir/mse_loss.cpp.o.d -o CMakeFiles/ml_framework.dir/mse_loss.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp
 
 src/CMakeFiles/ml_framework.dir/mse_loss.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/mse_loss.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp > CMakeFiles/ml_framework.dir/mse_loss.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp > CMakeFiles/ml_framework.dir/mse_loss.cpp.i
 
 src/CMakeFiles/ml_framework.dir/mse_loss.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/mse_loss.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp -o CMakeFiles/ml_framework.dir/mse_loss.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/mse_loss.cpp -o CMakeFiles/ml_framework.dir/mse_loss.cpp.s
 
 src/CMakeFiles/ml_framework.dir/utils.cpp.o: src/CMakeFiles/ml_framework.dir/flags.make
 src/CMakeFiles/ml_framework.dir/utils.cpp.o: ../src/utils.cpp
 src/CMakeFiles/ml_framework.dir/utils.cpp.o: src/CMakeFiles/ml_framework.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/ml_framework.dir/utils.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/utils.cpp.o -MF CMakeFiles/ml_framework.dir/utils.cpp.o.d -o CMakeFiles/ml_framework.dir/utils.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/ml_framework.dir/utils.cpp.o -MF CMakeFiles/ml_framework.dir/utils.cpp.o.d -o CMakeFiles/ml_framework.dir/utils.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp
 
 src/CMakeFiles/ml_framework.dir/utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ml_framework.dir/utils.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp > CMakeFiles/ml_framework.dir/utils.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp > CMakeFiles/ml_framework.dir/utils.cpp.i
 
 src/CMakeFiles/ml_framework.dir/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ml_framework.dir/utils.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp -o CMakeFiles/ml_framework.dir/utils.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp -o CMakeFiles/ml_framework.dir/utils.cpp.s
 
 # Object files for target ml_framework
 ml_framework_OBJECTS = \

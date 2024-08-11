@@ -73,57 +73,57 @@ tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o: tests/CMakeFiles/my_cuda_t
 tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o: ../tests/test_tensor.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp > CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp > CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.i
 
 tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp -o CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_tensor.cpp -o CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s
 
 tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
 tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: ../tests/test_linear.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp > CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp > CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i
 
 tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_linear.cpp -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s
 
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: ../tests/test_module.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_module.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_module.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/test_module.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp > CMakeFiles/my_cuda_tests.dir/test_module.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp > CMakeFiles/my_cuda_tests.dir/test_module.cpp.i
 
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_module.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp -o CMakeFiles/my_cuda_tests.dir/test_module.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_module.cpp -o CMakeFiles/my_cuda_tests.dir/test_module.cpp.s
 
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: ../tests/test_autograd.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/korca/Desktop/Gits/ml-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -c /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp > CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp > CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i
 
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s"
-	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s
+	cd /mnt/c/Users/korca/Desktop/Gits/ml-library/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s
 
 # Object files for target my_cuda_tests
 my_cuda_tests_OBJECTS = \

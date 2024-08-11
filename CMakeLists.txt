@@ -4,7 +4,13 @@ project(MLFramework LANGUAGES C CXX CUDA)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(MY_DEBUG_OPTIONS "-gdwarf-4;-O0;-pedantic-errors;-Wall;-Weffc++;-Wextra;-Wconversion;-Wsign-conversion;")
+# set(CMAKE_CUDA_STANDARD 14)  # or 11, 17, etc.
+# set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+# set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
+# set(CMAKE_CUDA_ARCHITECTURES "60;70;75;80")
+# set(CUDA_TOOLKIT_ROOT_DIR "/usr/lib/nvidia-cuda-toolkit")
+# -gdwarf
+set(MY_DEBUG_OPTIONS "-ggdb-4;-O0;-pedantic-errors;-Wall;-Weffc++;-Wextra;-Wconversion;-Wsign-conversion;")
 add_compile_options(${MY_DEBUG_OPTIONS})
 
 # Find Eigen
@@ -28,3 +34,5 @@ include_directories(include/ml_framework)
 # Enable testing
 add_subdirectory(src)
 add_subdirectory(tests)
+
+# cmake -DCMAKE_BUILD_TYPE=Debug ..

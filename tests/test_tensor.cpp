@@ -1,93 +1,125 @@
 #include <gtest/gtest.h>
 #include "tensor.h"
 
-namespace ml_framework {
+namespace ml_framework
+{
 
-class TensorTest : public ::testing::Test {
-protected:
-    // Setup function to run before each test
-    void SetUp() override {
-        // Code to initialize Tensor objects or other setup operations
-    }
-
-    // Teardown function to run after each test
-    void TearDown() override {
-        // Code to clean up after tests
-    }
-};
-
-// Test for Tensor constructor with shape
-TEST_F(TensorTest, ConstructorWithShape) {
-    std::vector<size_t> shape = {2, 3};
-    Tensor tensor(shape);
-    EXPECT_EQ(static_cast<const ml_framework::Tensor*>(&tensor)->shape(), shape);
-}
-
-// // Test for Tensor constructor with shape and data
-// TEST_F(TensorTest, ConstructorWithShapeAndData) {
-//     std::vector<size_t> shape = {2, 3};
-//     std::vector<float> data = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
-//     Tensor tensor(shape, data.data());
-//     EXPECT_EQ(tensor.shape(), shape);
-//     // Add additional checks to verify data
-// }
-
-// // Test Tensor addition operator
-// TEST_F(TensorTest, AdditionOperator) {
-//     std::vector<size_t> shape = {2, 2};
-//     std::vector<float> data1 = {1.0f, 2.0f, 3.0f, 4.0f};
-//     std::vector<float> data2 = {5.0f, 6.0f, 7.0f, 8.0f};
-
-//     Tensor tensor1(shape, data1.data());
-//     Tensor tensor2(shape, data2.data());
-//     Tensor result = tensor1 + tensor2;
-
-//     std::vector<float> expected_data = {6.0f, 8.0f, 10.0f, 12.0f};
-//     // Verify result data
-// }
-
-// // Test Tensor element-wise multiplication operator
-// TEST_F(TensorTest, MultiplicationOperator) {
-//     std::vector<size_t> shape = {2, 2};
-//     std::vector<float> data1 = {1.0f, 2.0f, 3.0f, 4.0f};
-//     std::vector<float> data2 = {5.0f, 6.0f, 7.0f, 8.0f};
-
-//     Tensor tensor1(shape, data1.data());
-//     Tensor tensor2(shape, data2.data());
-//     Tensor result = tensor1 * tensor2;
-
-//     std::vector<float> expected_data = {5.0f, 12.0f, 21.0f, 32.0f};
-//     // Verify result data
-// }
-
-// // Test Tensor matrix multiplication
-// TEST_F(TensorTest, MatMul) {
-//     std::vector<size_t> shape1 = {2, 3};
-//     std::vector<size_t> shape2 = {3, 2};
-//     std::vector<float> data1 = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
-//     std::vector<float> data2 = {7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f};
-
-//     Tensor tensor1(shape1, data1.data());
-//     Tensor tensor2(shape2, data2.data());
-//     Tensor result = tensor1.matmul(tensor2);
-
-//     std::vector<float> expected_data = {58.0f, 64.0f, 139.0f, 154.0f};
-//     // Verify result data
-// }
-
-// Test Tensor destructor
-TEST_F(TensorTest, Destructor) {
+    class TensorTest : public ::testing::Test
     {
-        Tensor tensor({2, 2});
-        // Check that resources are properly cleaned up
+    protected:
+        // Setup function to run before each test
+        void SetUp() override
+        {
+            // Code to initialize Tensor objects or other setup operations
+        }
+
+        // Teardown function to run after each test
+        void TearDown() override
+        {
+            // Code to clean up after tests
+        }
+    };
+
+    // Test for Tensor constructor with shape
+    TEST_F(TensorTest, ConstructorWithShape)
+    {
+        const std::vector<size_t> shape{1, 5};
+        const float data[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+        Tensor tensor(shape, &data[0]);
+        EXPECT_EQ(static_cast<const ml_framework::Tensor *>(&tensor)->shape(), shape);
+        for (size_t i = 0; i < 5; ++i)
+        {
+            EXPECT_FLOAT_EQ(tensor.host_data()[i], data[i]);
+            EXPECT_NE(tensor.host_data(), data);
+        }
     }
-    // After this block, the tensor destructor should be called
-    // Verify if necessary
+
+    TEST_F(TensorTest, ConstructorWithTensor)
+    {
+        const std::vector<size_t> shape{1, 5};
+        const float data[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+        Tensor tensor1(shape, &data[0]);
+        Tensor tensor2(tensor1);
+        for (size_t i = 0; i < 5; ++i)
+        {
+            EXPECT_FLOAT_EQ(tensor2.host_data()[i], tensor1.host_data()[i]);
+            EXPECT_NE(tensor2.host_data(), tensor1.host_data());
+        }
+    }
+
+    TEST_F(TensorTest, AdditionOperator)
+    {
+        // Define shapes and data for the tensors
+        const std::vector<size_t> shape{2, 3};
+        const float data1[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
+        const float data2[] = {6.0f, 5.0f, 4.0f, 3.0f, 2.0f, 1.0f};
+
+        // Create tensors
+        Tensor tensor1(shape, &data1[0]);
+        Tensor tensor2(shape, &data2[0]);
+
+        // Perform addition
+        Tensor result_tensor = tensor1 + tensor2;
+
+        // Define the expected result data
+        const float expected_data[] = {7.0f, 7.0f, 7.0f, 7.0f, 7.0f, 7.0f};
+
+        // Verify the shape
+        EXPECT_EQ(result_tensor.shape(), shape);
+
+        // Verify the data
+        const float *result_data = result_tensor.host_data();
+        for (size_t i = 0; i < 6; ++i)
+        {
+            EXPECT_FLOAT_EQ(result_data[i], expected_data[i]);
+        }
+    }
+
+    // TEST_F(TensorTest, AdditionOperator1Million)
+    // {
+    //     // Define shapes and data for the tensors
+
+    //     const size_t size = 1000000;
+    //     const std::vector<size_t> shape{1, size};
+    //     const float data1[size]{100.15};
+    //     const float data1[size]{142.35};
+
+    //     // Create tensors
+    //     Tensor tensor1(shape, &data1[0]);
+    //     Tensor tensor2(shape, &data2[0]);
+
+    //     // Perform addition
+    //     Tensor result_tensor = tensor1 + tensor2;
+
+    //     // Define the expected result data
+    //     const float expected_data[] = {7.0f, 7.0f, 7.0f, 7.0f, 7.0f, 7.0f};
+
+    //     // Verify the shape
+    //     EXPECT_EQ(result_tensor.shape(), shape);
+
+    //     // Verify the data
+    //     const float *result_data = result_tensor.host_data(); // Adjust as needed for your Tensor class
+    //     for (size_t i = 0; i < 6; ++i)
+    //     {
+    //         EXPECT_FLOAT_EQ(result_data[i], expected_data[i]);
+    //     }
+    // }
+
+    // Test Tensor destructor
+    TEST_F(TensorTest, Destructor)
+    {
+        {
+            const std::vector<size_t> shape{1,5};
+            const float data[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+            Tensor tensor(shape, &data[0]);
+            // Check that resources are properly cleaned up
+        }
+    }
 }
 
-} // namespace ml_framework
-
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    auto retVal = RUN_ALL_TESTS();
+    return retVal;
 }

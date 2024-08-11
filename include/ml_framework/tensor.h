@@ -7,44 +7,52 @@ RESTORE_WARNINGS
 #include <cublas_v2.h>
 #include <vector>
 
-using custom_type = float;
+// using custom_type = float;
 
-    namespace ml_framework
+namespace ml_framework
 {
     class Tensor
     {
     public:
-        // Constructor to initialize tensor with shape
-        Tensor(const std::vector<size_t> &shape);
-
         // Constructor to initialize tensor with shape and data
-        Tensor(const std::vector<size_t> &shape, const custom_type *data);
+        Tensor(const std::vector<size_t> &shape, const float *data);
+
+        Tensor(const Tensor &tensor);
+
+        // Tensor();
+        // Tensor &operator=(const Tensor &other);
+        // Tensor(Tensor &&other) noexcept;
+        // Tensor &operator=(Tensor &&other) noexcept;
 
         // Getter for shape
         const std::vector<size_t> &shape() const;
 
-        // Getter for data
-        const custom_type *data() const;
+        float *host_data() const;
+        float *host_data();
 
-        // Getter for data (non-const)
-        custom_type *data();
+        float *device_data() const;
+        float *device_data();
 
         // Overload + operator
-        Tensor operator+(const Tensor &other) const;
+        Tensor operator+(const Tensor &other);
 
         // Overload * operator (element-wise multiplication)
-        Tensor operator*(const Tensor &other) const;
+        Tensor operator*(const Tensor &other);
 
         // Matrix multiplication using cuBLAS
-        Tensor matmul(const Tensor &other) const;
+        Tensor matmul(const Tensor &other);
 
         // Cleanup CUDA resources
         ~Tensor();
+        void transferDataToDevice() const;
+        void transferDataToHost() const;
+        static void initializeCuBLAS();
+        static void cleanupCuBLAS();
 
     private:
-        std::vector<size_t> _shape; // Shape of the tensor (e.g., dimensions)
-        size_t _data_size;
-        custom_type *_data;              // Data storage (flattened)
+        std::vector<size_t> m_shape; // Shape of the tensor (e.g., dimensions)
+        size_t data_size;
+        float *h_data = nullptr; // Data storage (flattened)
 
         // CUDA resources
         mutable float *d_data = nullptr;     // Device pointer for data
@@ -53,10 +61,6 @@ using custom_type = float;
         // Helper functions
         void allocateDeviceMemory() const;
         void freeDeviceMemory() const;
-        void transferDataToDevice() const;
-        void transferDataToHost() const;
-        static void initializeCuBLAS();
-        static void cleanupCuBLAS();
     };
 }
 
