@@ -4,7 +4,9 @@
 #include "suppress_warnings.h"
 SUPPRESS_SIGN_CONVERSION_WARNINGS
 RESTORE_WARNINGS
+
 #include <cublas_v2.h>
+#include <cuda_runtime.h>
 #include <vector>
 
 // using custom_type = float;
@@ -44,6 +46,8 @@ namespace ml_framework
 
         // Cleanup CUDA resources
         ~Tensor();
+
+        void elementWiseMultiply(const float* d_a, const float* d_b, float* d_c, int n);
         void transferDataToDevice() const;
         void transferDataToHost() const;
         static void initializeCuBLAS();
@@ -51,7 +55,7 @@ namespace ml_framework
 
     private:
         std::vector<size_t> m_shape; // Shape of the tensor (e.g., dimensions)
-        size_t data_size;
+        size_t data_size = 0;
         float *h_data = nullptr; // Data storage (flattened)
 
         // CUDA resources

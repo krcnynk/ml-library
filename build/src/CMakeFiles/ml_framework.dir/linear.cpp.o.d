@@ -1,2 +1,2 @@
-src/CMakeFiles/ml_framework.dir/linear.cpp.o: \
-  /mnt/c/Users/korca/Desktop/Gits/ml-library/src/linear.cpp
+src/CMakeFiles/ml_framework.dir/linear.cpp.o: /workspace/src/linear.cpp \
+ /usr/include/stdc-predef.h

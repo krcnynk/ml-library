@@ -1,10 +1,9 @@
 // #include "ml_framework/tensor.h"
-#include <cuda_runtime.h>
+// #include <cuda_runtime.h>
 #include <stdexcept>
 #include <iostream>
 #include <memory>
 #include "tensor.h"
-#include <algorithm>
 
 // if ([] {
 //     static bool is_first_time = true;
@@ -97,7 +96,6 @@ namespace ml_framework
         data_size = prod_shape(m_shape);
         this->h_data = new float[data_size];
         std::memcpy(this->h_data, data, sizeof(*data) * data_size);
-
         // Initialize CUDA resources
         allocateDeviceMemory();
     }
@@ -105,7 +103,7 @@ namespace ml_framework
     Tensor::Tensor(const Tensor &tensor)
         : m_shape(tensor.shape())
     {
-        std::cout << "Copy CONSTRUCTOR" << std::endl;
+        // std::cout << "Copy CONSTRUCTOR" << std::endl;
         data_size = prod_shape(m_shape);
         h_data = new float[data_size];
         std::memcpy(this->h_data, tensor.host_data(), sizeof(*h_data) * data_size);
@@ -113,6 +111,8 @@ namespace ml_framework
         // Initialize CUDA resources
         allocateDeviceMemory();
     }
+
+    //TODO: various member functions/constructors need to be done
     ///////////////////////////////////////////////////
     // Tensor::Tensor()
     // {
@@ -135,6 +135,7 @@ namespace ml_framework
     //     return Tensor();
     // }
     //////////////////////////////////////////////////////////////////////////////
+
     const std::vector<size_t> &Tensor::shape() const
     {
         return m_shape;
@@ -169,19 +170,27 @@ namespace ml_framework
 
         Tensor result_tensor(*this);
         const float alpha = 1.0f;
-        cublasSaxpy(cublas_handle, this->data_size, &alpha, this->device_data(), 1, result_tensor.device_data(), 1);
+        
+        // FIXME: this->data_size is size_t but cublas expects an int, if size_t is too large will overflow to negative when casted
+        cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
         result_tensor.transferDataToHost();
-        // std::memcpy(result_tensor.host_data(), result_tensor.host_data(), sizeof(float) * data_size);
         return result_tensor;
     }
 
     // Tensor Tensor::operator*(const Tensor &other)
     // {
-    //     if (m_shape != other.m_shape)
-    //     {
-    //         throw std::runtime_error("Tensor m_shapes must match for multiplication.");
-    //     }
-    //     return Tensor(m_shape, h_data.cwiseProduct(other.h_data));
+        // if (m_shape != other.m_shape)
+        // {
+        //     throw std::runtime_error("Tensor m_shapes must match for addition.");
+        // }
+
+        // Tensor result_tensor(*this);
+        // const float alpha = 1.0f;
+        
+        // // FIXME: this->data_size is size_t but cublas expects an int, if size_t is too large will overflow to negative when casted
+        // cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
+        // result_tensor.transferDataToHost();
+        // return result_tensor;
     // }
 
     // Tensor Tensor::matmul(const Tensor &other)

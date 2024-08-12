@@ -1,5 +1,6 @@
 # Use the official NVIDIA CUDA base image with Ubuntu
-FROM nvidia/cuda:12.2.0-base-ubuntu22.04
+# docker pull nvidia/cuda:12.5.1-cudnn-devel-ubuntu20.04
+FROM nvidia/cuda:12.5.1-devel-ubuntu24.04
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -11,11 +12,11 @@ RUN apt-get update && apt-get install -y \
     wget \
     curl \
     libcupti-dev \
+    libgtest-dev\
     && rm -rf /var/lib/apt/lists/*
-
 # Install CUDA Toolkit and libraries (including cuBLAS, cuFFT, etc.)
 RUN apt-get update && apt-get install -y \
-    cuda-toolkit-12-2 \
+    # cuda-toolkit-12-2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install cuDNN (optional, if you need deep learning libraries)
@@ -28,9 +29,11 @@ RUN apt-get update && apt-get install -y \
 ENV PATH=/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
 
+# ls /usr/local/cuda/include/cublas_v2.h
+
 # Verify installation
-RUN nvcc --version && \
-    nvidia-smi
+# RUN nvcc --version && \
+#     nvidia-smi
 
 # Set the working directory
 VOLUME /workspace
@@ -43,5 +46,5 @@ WORKDIR /workspace
 # CMD ["/bin/bash"]
 
 # docker build -t my_app .
-# docker run --gpus all -it --rm --shm-size=10.12gb --name my-container -v ${PWD}:/usr/src/temp my_app /bin/sh
-# docker run -it --rm --name my-container -v ${PWD}:/usr/src/temp my_app bash
+# docker run --gpus all -it --rm --shm-size=10.12gb --name my-container -v ${PWD}:/workspace my_app /bin/bash
+# docker run -it --rm --name my-container -v ${PWD}:/workspace my_app bash

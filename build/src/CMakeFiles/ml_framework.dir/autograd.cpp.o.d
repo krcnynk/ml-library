@@ -1,2 +1,2 @@
 src/CMakeFiles/ml_framework.dir/autograd.cpp.o: \
-  /mnt/c/Users/korca/Desktop/Gits/ml-library/src/autograd.cpp
+ /workspace/src/autograd.cpp /usr/include/stdc-predef.h

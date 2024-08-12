@@ -1,2 +1,2 @@
-src/CMakeFiles/ml_framework.dir/utils.cpp.o: \
-  /mnt/c/Users/korca/Desktop/Gits/ml-library/src/utils.cpp
+src/CMakeFiles/ml_framework.dir/utils.cpp.o: /workspace/src/utils.cpp \
+ /usr/include/stdc-predef.h

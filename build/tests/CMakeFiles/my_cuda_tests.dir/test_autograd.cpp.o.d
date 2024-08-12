@@ -1,2 +1,2 @@
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: \
-  /mnt/c/Users/korca/Desktop/Gits/ml-library/tests/test_autograd.cpp
+ /workspace/tests/test_autograd.cpp /usr/include/stdc-predef.h
