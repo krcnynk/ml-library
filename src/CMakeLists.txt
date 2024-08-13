@@ -4,6 +4,7 @@ set(CUDA_SOURCES tensor.cu)
 # Object library
 add_library(cuda_objs OBJECT ${CUDA_SOURCES})
 
+set(CUDA_ARCHITECTURES 41234)
 # executable target, library target etc.
 set_target_properties(cuda_objs PROPERTIES
     CUDA_STANDARD 20  # Set this according to your requirements

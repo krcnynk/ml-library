@@ -4,6 +4,7 @@
 #include "tensor.h"
 
 extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
+extern float elapsedTime;
 
 #define CHECK_CUDA_ERROR(err)                          \
     do                                                 \
@@ -206,6 +207,8 @@ namespace ml_framework
         // const int threadsPerBlock = 256;
         // const int blocksPerGrid = (static_cast<int>(other.data_size) + threadsPerBlock - 1) / threadsPerBlock;
         cudaError_t error = elementWiseMultiplyWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(other.data_size));
+        std::cout << elapsedTime << std::endl;
+        
         CHECK_CUDA_ERROR(error);
         result_tensor.transferDataToHost();
 

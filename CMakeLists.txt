@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-
+set(CMAKE_CXX_COMPILER "g++")
 # Sets the name of the project, and stores it in the variable PROJECT_NAME. 
 # When called from the top-level CMakeLists.txt also stores the project name 
 # in the variable CMAKE_PROJECT_NAME.

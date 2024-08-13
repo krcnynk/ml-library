@@ -50,7 +50,7 @@ namespace ml_framework
         // Overload * operator (element-wise multiplication)
         Tensor operator*(const Tensor &other);
 
-        // TODO: -Weffc+ cause pointer data members
+        // TODO: -Weffc+ because of pointer data members, implement =
         Tensor operator=(const Tensor &other);
 
         // Matrix multiplication using cuBLAS
