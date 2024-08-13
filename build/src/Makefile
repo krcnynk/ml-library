@@ -117,6 +117,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/CMakeFiles/cuda_objs.dir/rule:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/cuda_objs.dir/rule
+.PHONY : src/CMakeFiles/cuda_objs.dir/rule
+
+# Convenience name for target.
+cuda_objs: src/CMakeFiles/cuda_objs.dir/rule
+.PHONY : cuda_objs
+
+# fast build rule for target.
+cuda_objs/fast:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/build
+.PHONY : cuda_objs/fast
+
+# Convenience name for target.
 src/CMakeFiles/ml_framework.dir/rule:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/ml_framework.dir/rule
 .PHONY : src/CMakeFiles/ml_framework.dir/rule
@@ -274,6 +288,30 @@ tensor.cpp.s:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ml_framework.dir/build.make src/CMakeFiles/ml_framework.dir/tensor.cpp.s
 .PHONY : tensor.cpp.s
 
+tensor.o: tensor.cu.o
+.PHONY : tensor.o
+
+# target to build an object file
+tensor.cu.o:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.o
+.PHONY : tensor.cu.o
+
+tensor.i: tensor.cu.i
+.PHONY : tensor.i
+
+# target to preprocess a source file
+tensor.cu.i:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.i
+.PHONY : tensor.cu.i
+
+tensor.s: tensor.cu.s
+.PHONY : tensor.s
+
+# target to generate assembly for a file
+tensor.cu.s:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.s
+.PHONY : tensor.cu.s
+
 utils.o: utils.cpp.o
 .PHONY : utils.o
 
@@ -306,6 +344,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cuda_objs"
 	@echo "... ml_framework"
 	@echo "... autograd.o"
 	@echo "... autograd.i"
@@ -322,6 +361,9 @@ help:
 	@echo "... relu.o"
 	@echo "... relu.i"
 	@echo "... relu.s"
+	@echo "... tensor.o"
+	@echo "... tensor.i"
+	@echo "... tensor.s"
 	@echo "... tensor.o"
 	@echo "... tensor.i"
 	@echo "... tensor.s"

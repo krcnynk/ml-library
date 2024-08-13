@@ -1,4 +1,6 @@
 # ml-library
- A small ML library
- To compile in debug mode, go into /build folder and run:
-	cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Debug ..
+## This is a small CUDA based ML library
+Please install Docker and use the supplied Dockerfile to create a container\
+To compile in debug mode, go into /build folder and run: \
+cmake .. \
+You can run tests by ./tests/my_cuda_tests \

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/usr/local/cuda/targets/x86_64-linux/include -I/workspace/include/ml_framework
 
-CXX_FLAGS = -g -std=c++23 -ggdb -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -DGTEST_HAS_PTHREAD=1
+CXX_FLAGS = -g -DGTEST_HAS_PTHREAD=1
 

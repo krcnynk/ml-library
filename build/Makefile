@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cuda_objs
+
+# Build rule for target.
+cuda_objs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cuda_objs
+.PHONY : cuda_objs
+
+# fast build rule for target.
+cuda_objs/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/build
+.PHONY : cuda_objs/fast
+
+#=============================================================================
 # Target rules for targets named ml_framework
 
 # Build rule for target.
@@ -150,6 +163,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cuda_objs"
 	@echo "... ml_framework"
 	@echo "... my_cuda_tests"
 .PHONY : help

@@ -1,21 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
+
+# Sets the name of the project, and stores it in the variable PROJECT_NAME. 
+# When called from the top-level CMakeLists.txt also stores the project name 
+# in the variable CMAKE_PROJECT_NAME.
 project(MLFramework LANGUAGES C CXX CUDA)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_EXTENSIONS OFF)
-# set(CMAKE_CUDA_STANDARD 14)  # or 11, 17, etc.
+# set variable value
+# set(CMAKE_CXX_STANDARD 20)
+# set(CMAKE_CXX_STANDARD_REQUIRED True)
+# set(CMAKE_CXX_EXTENSIONS OFF)
+# set(CMAKE_CUDA_STANDARD 20)  # or another standard if needed
 # set(CMAKE_CUDA_STANDARD_REQUIRED ON)
-# set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
-# set(CMAKE_CUDA_ARCHITECTURES "60;70;75;80")
-# set(CUDA_TOOLKIT_ROOT_DIR "/usr/lib/nvidia-cuda-toolkit")
-# -gdwarf
-set(MY_DEBUG_OPTIONS "-ggdb;-O0;-pedantic-errors;-Wall;-Weffc++;-Wextra;-Wconversion;-Wsign-conversion;")
-add_compile_options(${MY_DEBUG_OPTIONS})
 
-# Find Eigen
+# add_compile_options(${MY_DEBUG_OPTIONS})
+
 find_package(CUDAToolkit REQUIRED)
-# find_package(CUDA REQUIRED)
 find_package(GTest REQUIRED)
 
 message(STATUS "Available CUDA targets:")
@@ -24,10 +23,14 @@ message(STATUS "CUDA::cublas: ${CUDA_cublas_LIBRARY}")
 message(STATUS "CUDA Include Directories: ${CUDAToolkit_INCLUDE_DIRS}")
 message(STATUS "${CMAKE_SOURCE_DIR}")
 
+# included HEADERS
 include_directories(${GTEST_INCLUDE_DIRS})
 include_directories(${CUDAToolkit_INCLUDE_DIRS})
 include_directories(include/ml_framework)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
 
 # Enable testing
 add_subdirectory(src)

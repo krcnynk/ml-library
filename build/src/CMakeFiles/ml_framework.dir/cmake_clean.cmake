@@ -18,6 +18,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang CUDA CXX)
   include(CMakeFiles/ml_framework.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

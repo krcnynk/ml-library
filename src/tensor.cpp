@@ -1,24 +1,9 @@
 // #include "ml_framework/tensor.h"
 // #include <cuda_runtime.h>
-#include <stdexcept>
-#include <iostream>
-#include <memory>
+
 #include "tensor.h"
 
-// if ([] {
-//     static bool is_first_time = true;
-//     auto was_first_time = is_first_time;
-//     is_first_time = false;
-//     return was_first_time; } ())
-// {
-//     // do the initialization part
-// }
-
-// #define FIRST_TIME_HERE ([] { \
-//     static bool is_first_time = true; \
-//     auto was_first_time = is_first_time; \
-//     is_first_time = false; \
-//     return was_first_time; }())
+extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
 
 #define CHECK_CUDA_ERROR(err)                          \
     do                                                 \
@@ -49,6 +34,16 @@ namespace ml_framework
 
     // Initialize the cuBLAS handle, Temporarily Global
     cublasHandle_t Tensor::cublas_handle = nullptr;
+
+    static int safe_sizet_int(size_t value)
+    {
+        if (value > static_cast<size_t>(std::numeric_limits<int>::max()))
+        {
+            std::string error_msg = "size_t to int conversion error.";
+            throw std::runtime_error(error_msg);
+        }
+        return static_cast<int>(value);
+    }
 
     static inline std::string getCuBlasErrorString(cublasStatus_t status)
     {
@@ -89,6 +84,30 @@ namespace ml_framework
         return total_elements;
     }
 
+    std::ostream &operator<<(std::ostream &os, const Tensor &tensor)
+    {
+        std::vector<size_t> v_size = tensor.m_shape;
+        float *data = tensor.h_data;
+
+        for (long unsigned int i = 0; i < tensor.data_size; ++i)
+        {
+
+            if (((i + 1) % (v_size[0] * v_size[1])) == 0)
+            {
+                os << *(data + i) << '\n'
+                   << '\n';
+            }
+            else if (((i + 1) % v_size[1]) == 0)
+            {
+                os << *(data + i) << '\n';
+            }
+            else
+            {
+                os << *(data + i) << " ";
+            }
+        }
+        return os;
+    }
     Tensor::Tensor(const std::vector<size_t> &shape, const float *data)
         : m_shape(shape)
     {
@@ -103,16 +122,16 @@ namespace ml_framework
     Tensor::Tensor(const Tensor &tensor)
         : m_shape(tensor.shape())
     {
-        // std::cout << "Copy CONSTRUCTOR" << std::endl;
+        std::cout << "Copy CONSTRUCTOR" << std::endl;
         data_size = prod_shape(m_shape);
         h_data = new float[data_size];
-        std::memcpy(this->h_data, tensor.host_data(), sizeof(*h_data) * data_size);
+        std::memcpy(this->h_data, tensor.h_data, sizeof(*h_data) * data_size);
 
         // Initialize CUDA resources
         allocateDeviceMemory();
     }
 
-    //TODO: various member functions/constructors need to be done
+    // TODO: various member functions/constructors need to be done
     ///////////////////////////////////////////////////
     // Tensor::Tensor()
     // {
@@ -170,28 +189,28 @@ namespace ml_framework
 
         Tensor result_tensor(*this);
         const float alpha = 1.0f;
-        
-        // FIXME: this->data_size is size_t but cublas expects an int, if size_t is too large will overflow to negative when casted
-        cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
+
+        cublasSaxpy(cublas_handle, safe_sizet_int(this->data_size), &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
         result_tensor.transferDataToHost();
         return result_tensor;
     }
 
-    // Tensor Tensor::operator*(const Tensor &other)
-    // {
-        // if (m_shape != other.m_shape)
-        // {
-        //     throw std::runtime_error("Tensor m_shapes must match for addition.");
-        // }
+    Tensor Tensor::operator*(const Tensor &other)
+    {
+        if (m_shape != other.m_shape)
+        {
+            throw std::runtime_error("Tensor m_shapes must match for addition.");
+        }
 
-        // Tensor result_tensor(*this);
-        // const float alpha = 1.0f;
-        
-        // // FIXME: this->data_size is size_t but cublas expects an int, if size_t is too large will overflow to negative when casted
-        // cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
-        // result_tensor.transferDataToHost();
-        // return result_tensor;
-    // }
+        Tensor result_tensor = Tensor(other);
+        // const int threadsPerBlock = 256;
+        // const int blocksPerGrid = (static_cast<int>(other.data_size) + threadsPerBlock - 1) / threadsPerBlock;
+        cudaError_t error = elementWiseMultiplyWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(other.data_size));
+        CHECK_CUDA_ERROR(error);
+        result_tensor.transferDataToHost();
+
+        return result_tensor;
+    }
 
     // Tensor Tensor::matmul(const Tensor &other)
     // {
@@ -204,9 +223,9 @@ namespace ml_framework
     //         throw std::runtime_error("Matrix dimensions must align for multiplication.");
     //     }
 
-    //     std::vector<size_t> resultm_shape(2);
-    //     resultm_shape << m_shape[0], other.m_shape[1];
-    //     Tensor result(resultm_shape);
+    //     std::vector<size_t> result_shape(2);
+    //     result_shape << m_shape[0], other.m_shape[1];
+    //     Tensor result(result_shape);
 
     //     // Perform matrix multiplication using cuBLAS
     //     const float alpha = 1.0f;
@@ -235,24 +254,6 @@ namespace ml_framework
 
     //     return result;
     // }
-
-    void Tensor::allocateDeviceMemory() const
-    {
-        if (d_data == nullptr)
-        {
-            cudaMalloc((void **)&d_data, static_cast<unsigned long>(data_size) * sizeof(float));
-            transferDataToDevice();
-        }
-    }
-
-    void Tensor::freeDeviceMemory() const
-    {
-        if (d_data != nullptr)
-        {
-            cudaFree(d_data);
-            d_data = nullptr;
-        }
-    }
 
     void Tensor::transferDataToDevice() const
     {
@@ -305,6 +306,24 @@ namespace ml_framework
         {
             cublasDestroy(cublas_handle);
             cublas_handle = nullptr;
+        }
+    }
+
+    void Tensor::allocateDeviceMemory() const
+    {
+        if (d_data == nullptr)
+        {
+            cudaMalloc((void **)&d_data, static_cast<unsigned long>(data_size) * sizeof(float));
+            transferDataToDevice();
+        }
+    }
+
+    void Tensor::freeDeviceMemory() const
+    {
+        if (d_data != nullptr)
+        {
+            cudaFree(d_data);
+            d_data = nullptr;
         }
     }
 

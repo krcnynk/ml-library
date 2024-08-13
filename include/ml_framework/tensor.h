@@ -8,7 +8,14 @@ RESTORE_WARNINGS
 #include <cublas_v2.h>
 #include <cuda_runtime.h>
 #include <vector>
+#include <stdexcept>
+#include <iostream>
+#include <memory>
 
+// extern "C"
+// {
+//     __global__ void elementWiseMultiplyKernel(const float *d_a, const float *d_b, float *d_c, int n);
+// }
 // using custom_type = float;
 
 namespace ml_framework
@@ -17,6 +24,8 @@ namespace ml_framework
     {
     public:
         // Constructor to initialize tensor with shape and data
+        Tensor() = default;
+
         Tensor(const std::vector<size_t> &shape, const float *data);
 
         Tensor(const Tensor &tensor);
@@ -41,13 +50,16 @@ namespace ml_framework
         // Overload * operator (element-wise multiplication)
         Tensor operator*(const Tensor &other);
 
+        // TODO: -Weffc+ cause pointer data members
+        Tensor operator=(const Tensor &other);
+
         // Matrix multiplication using cuBLAS
         Tensor matmul(const Tensor &other);
 
         // Cleanup CUDA resources
         ~Tensor();
 
-        void elementWiseMultiply(const float* d_a, const float* d_b, float* d_c, int n);
+        friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
         void transferDataToDevice() const;
         void transferDataToHost() const;
         static void initializeCuBLAS();
@@ -57,7 +69,6 @@ namespace ml_framework
         std::vector<size_t> m_shape; // Shape of the tensor (e.g., dimensions)
         size_t data_size = 0;
         float *h_data = nullptr; // Data storage (flattened)
-
         // CUDA resources
         mutable float *d_data = nullptr;     // Device pointer for data
         static cublasHandle_t cublas_handle; // cuBLAS handle

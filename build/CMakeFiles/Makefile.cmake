@@ -67,6 +67,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "src/CMakeFiles/cuda_objs.dir/DependInfo.cmake"
   "src/CMakeFiles/ml_framework.dir/DependInfo.cmake"
   "tests/CMakeFiles/my_cuda_tests.dir/DependInfo.cmake"
   )
