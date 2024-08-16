@@ -53,6 +53,11 @@
     "xlocnum": "cpp",
     "xloctime": "cpp",
     "random": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "cstdarg": "cpp",
+    "functional": "cpp",
+    "list": "cpp",
+    "unordered_map": "cpp",
+    "xhash": "cpp"
   }
 }

@@ -26,9 +26,10 @@ namespace ml_framework
         // Constructor to initialize tensor with shape and data
         Tensor() = default;
 
-        Tensor(const std::vector<size_t> &shape, const float *data);
+        Tensor(const std::vector<int> &shape, const float *data);
 
         Tensor(const Tensor &tensor);
+        Tensor(const std::vector<int> &shape);
 
         // Tensor();
         // Tensor &operator=(const Tensor &other);
@@ -36,7 +37,7 @@ namespace ml_framework
         // Tensor &operator=(Tensor &&other) noexcept;
 
         // Getter for shape
-        const std::vector<size_t> &shape() const;
+        const std::vector<int> &shape() const;
 
         float *host_data() const;
         float *host_data();
@@ -55,9 +56,10 @@ namespace ml_framework
 
         // Matrix multiplication using cuBLAS
         Tensor matmul(const Tensor &other);
-
         // Cleanup CUDA resources
         ~Tensor();
+
+        bool operator==( const Tensor &other);
 
         friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
         void transferDataToDevice() const;
@@ -66,8 +68,8 @@ namespace ml_framework
         static void cleanupCuBLAS();
 
     private:
-        std::vector<size_t> m_shape; // Shape of the tensor (e.g., dimensions)
-        size_t data_size = 0;
+        std::vector<int> m_shape; // Shape of the tensor (e.g., dimensions)
+        int data_size = 0;
         float *h_data = nullptr; // Data storage (flattened)
         // CUDA resources
         mutable float *d_data = nullptr;     // Device pointer for data
