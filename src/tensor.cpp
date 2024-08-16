@@ -220,6 +220,7 @@ namespace ml_framework
         // const int blocksPerGrid = (static_cast<int>(other.data_size) + threadsPerBlock - 1) / threadsPerBlock;
         cudaError_t error = elementWiseMultiplyWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(other.data_size));
         std::cout << elapsedTime << std::endl;
+        
         CHECK_CUDA_ERROR(error);
         result_tensor.transferDataToHost();
 
@@ -247,9 +248,7 @@ namespace ml_framework
         int k = m_shape[1];       // A columns
         int n = other.m_shape[1]; // B columns
 
-        int p = other.m_shape[0]; // B rows
         cublasSetPointerMode(cublas_handle, CUBLAS_POINTER_MODE_HOST);
-
         cublasStatus_t status = cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, m, n, k, &alpha,
                                             other.d_data, n, d_data, k, &beta, result_matrix.d_data, n);
         CHECK_CUBLAS_STATUS(status);
