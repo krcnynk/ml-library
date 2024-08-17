@@ -209,6 +209,8 @@ namespace ml_framework
         Tensor tensor1(shape1, &data1[0]);
         Tensor tensor2(shape2, &data2[0]);
 
+        std::cout << tensor1 << tensor2 << std::endl;
+
         // Perform addition
         Tensor result_tensor = tensor1.matmul(tensor2);
 
@@ -244,9 +246,3 @@ namespace ml_framework
     }
 }
 
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    auto retVal = RUN_ALL_TESTS();
-    return retVal;
-}

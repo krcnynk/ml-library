@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/my_cuda_tests.dir/main.cpp.o"
+  "CMakeFiles/my_cuda_tests.dir/main.cpp.o.d"
   "CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o"
   "CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o.d"
-  "CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o"
-  "CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o.d"
   "CMakeFiles/my_cuda_tests.dir/test_module.cpp.o"
   "CMakeFiles/my_cuda_tests.dir/test_module.cpp.o.d"
   "CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o"

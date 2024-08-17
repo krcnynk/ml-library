@@ -130,6 +130,30 @@ my_cuda_tests/fast:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/build
 .PHONY : my_cuda_tests/fast
 
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 test_autograd.o: test_autograd.cpp.o
 .PHONY : test_autograd.o
 
@@ -153,30 +177,6 @@ test_autograd.s: test_autograd.cpp.s
 test_autograd.cpp.s:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s
 .PHONY : test_autograd.cpp.s
-
-test_linear.o: test_linear.cpp.o
-.PHONY : test_linear.o
-
-# target to build an object file
-test_linear.cpp.o:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o
-.PHONY : test_linear.cpp.o
-
-test_linear.i: test_linear.cpp.i
-.PHONY : test_linear.i
-
-# target to preprocess a source file
-test_linear.cpp.i:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i
-.PHONY : test_linear.cpp.i
-
-test_linear.s: test_linear.cpp.s
-.PHONY : test_linear.s
-
-# target to generate assembly for a file
-test_linear.cpp.s:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/my_cuda_tests.dir/build.make tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s
-.PHONY : test_linear.cpp.s
 
 test_module.o: test_module.cpp.o
 .PHONY : test_module.o
@@ -235,12 +235,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... my_cuda_tests"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... test_autograd.o"
 	@echo "... test_autograd.i"
 	@echo "... test_autograd.s"
-	@echo "... test_linear.o"
-	@echo "... test_linear.i"
-	@echo "... test_linear.s"
 	@echo "... test_module.o"
 	@echo "... test_module.i"
 	@echo "... test_module.s"

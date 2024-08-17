@@ -83,24 +83,10 @@ tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s"
 	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/tests/test_tensor.cpp -o CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.s
 
-tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
-tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: /workspace/tests/test_linear.cpp
-tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o"
-	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o -c /workspace/tests/test_linear.cpp
-
-tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i"
-	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/tests/test_linear.cpp > CMakeFiles/my_cuda_tests.dir/test_linear.cpp.i
-
-tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s"
-	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/tests/test_linear.cpp -o CMakeFiles/my_cuda_tests.dir/test_linear.cpp.s
-
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: /workspace/tests/test_module.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o"
 	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_module.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_module.cpp.o -c /workspace/tests/test_module.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.i: cmake_force
@@ -114,7 +100,7 @@ tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.s: cmake_force
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: /workspace/tests/test_autograd.cpp
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o"
 	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -MF CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o -c /workspace/tests/test_autograd.cpp
 
 tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.i: cmake_force
@@ -125,20 +111,34 @@ tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s"
 	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/tests/test_autograd.cpp -o CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.s
 
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/flags.make
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o: /workspace/tests/main.cpp
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o: tests/CMakeFiles/my_cuda_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o"
+	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o -MF CMakeFiles/my_cuda_tests.dir/main.cpp.o.d -o CMakeFiles/my_cuda_tests.dir/main.cpp.o -c /workspace/tests/main.cpp
+
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/my_cuda_tests.dir/main.cpp.i"
+	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/tests/main.cpp > CMakeFiles/my_cuda_tests.dir/main.cpp.i
+
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/my_cuda_tests.dir/main.cpp.s"
+	cd /workspace/build/tests && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/tests/main.cpp -o CMakeFiles/my_cuda_tests.dir/main.cpp.s
+
 # Object files for target my_cuda_tests
 my_cuda_tests_OBJECTS = \
 "CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o" \
-"CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o" \
 "CMakeFiles/my_cuda_tests.dir/test_module.cpp.o" \
-"CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o"
+"CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o" \
+"CMakeFiles/my_cuda_tests.dir/main.cpp.o"
 
 # External object files for target my_cuda_tests
 my_cuda_tests_EXTERNAL_OBJECTS =
 
 tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o
-tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o
 tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o
 tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o
+tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o
 tests/my_cuda_tests: tests/CMakeFiles/my_cuda_tests.dir/build.make
 tests/my_cuda_tests: src/libml_framework.a
 tests/my_cuda_tests: /usr/lib/x86_64-linux-gnu/libgtest_main.a

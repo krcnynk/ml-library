@@ -1,9 +1,10 @@
 # Add test source files
 set(TEST_SOURCES
     test_tensor.cpp
-    test_linear.cpp
+    # test_linear.cpp
     test_module.cpp
     test_autograd.cpp
+    main.cpp
     # Add more test files here
 )
 

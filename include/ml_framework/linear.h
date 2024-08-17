@@ -14,19 +14,13 @@ namespace ml_framework
   {
   public:
     Linear() = default;
-    // Constructor: initializes weights and biases for the linear layer
     Linear(int in_features, int out_features);
-
-    // Override the forward method to implement the linear transformation
-    Tensor forward(const Tensor &input) override;
-
+    std::unique_ptr<Tensor> forward(const Tensor &input) override;
     ~Linear() override = default;
-
   private:
     Tensor weight_; // Weight tensor
     Tensor bias_;   // Bias tensor
   };
 
 }
-
 #endif

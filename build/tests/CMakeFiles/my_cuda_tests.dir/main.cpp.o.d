@@ -1,6 +1,6 @@
-tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: \
- /workspace/tests/test_module.cpp /usr/include/stdc-predef.h \
- /usr/include/gtest/gtest.h /usr/include/c++/13/cstddef \
+tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o: /workspace/tests/main.cpp \
+ /usr/include/stdc-predef.h /usr/include/gtest/gtest.h \
+ /usr/include/c++/13/cstddef \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -272,70 +272,4 @@ tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o: \
  /usr/include/c++/13/cassert /usr/include/assert.h \
  /usr/include/gtest/gtest-test-part.h \
  /usr/include/gtest/gtest-typed-test.h \
- /usr/include/gtest/gtest_pred_impl.h /usr/include/gtest/gtest_prod.h \
- /workspace/include/ml_framework/tensor.h \
- /workspace/include/ml_framework/suppress_warnings.h \
- /usr/local/cuda/targets/x86_64-linux/include/cublas_v2.h \
- /usr/local/cuda/targets/x86_64-linux/include/cublas_api.h \
- /usr/local/cuda/targets/x86_64-linux/include/driver_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/crt/host_defines.h \
- /usr/local/cuda/targets/x86_64-linux/include/vector_types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuComplex.h \
- /usr/include/c++/13/math.h /usr/include/c++/13/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/tr1/gamma.tcc \
- /usr/include/c++/13/tr1/special_function_util.h \
- /usr/include/c++/13/tr1/bessel_function.tcc \
- /usr/include/c++/13/tr1/beta_function.tcc \
- /usr/include/c++/13/tr1/ell_integral.tcc \
- /usr/include/c++/13/tr1/exp_integral.tcc \
- /usr/include/c++/13/tr1/hypergeometric.tcc \
- /usr/include/c++/13/tr1/legendre_function.tcc \
- /usr/include/c++/13/tr1/modified_bessel_func.tcc \
- /usr/include/c++/13/tr1/poly_hermite.tcc \
- /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_fp16.h \
- /usr/local/cuda/targets/x86_64-linux/include/vector_functions.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_runtime_api.h \
- /usr/local/cuda/targets/x86_64-linux/include/builtin_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/device_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/surface_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/texture_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_device_runtime_api.h \
- /usr/local/cuda/targets/x86_64-linux/include/vector_functions.hpp \
- /usr/local/cuda/targets/x86_64-linux/include/nv/target \
- /usr/local/cuda/targets/x86_64-linux/include/nv/detail/__target_macros \
- /usr/local/cuda/targets/x86_64-linux/include/nv/detail/__preprocessor \
- /usr/include/c++/13/cstring \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_fp16.hpp \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_bf16.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_fp16.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_bf16.hpp \
- /usr/local/cuda/targets/x86_64-linux/include/library_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/cuda_runtime.h \
- /usr/local/cuda/targets/x86_64-linux/include/crt/host_config.h \
- /usr/local/cuda/targets/x86_64-linux/include/library_types.h \
- /usr/local/cuda/targets/x86_64-linux/include/channel_descriptor.h \
- /usr/local/cuda/targets/x86_64-linux/include/driver_functions.h \
- /workspace/include/ml_framework/linear.h \
- /workspace/include/ml_framework/tensor.h \
- /workspace/include/ml_framework/module.h /usr/include/c++/13/list \
- /usr/include/c++/13/bits/stl_list.h /usr/include/c++/13/bits/list.tcc \
- /workspace/include/ml_framework/module.h
+ /usr/include/gtest/gtest_pred_impl.h /usr/include/gtest/gtest_prod.h

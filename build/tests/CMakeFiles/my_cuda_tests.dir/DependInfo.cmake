@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/workspace/tests/main.cpp" "tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o" "gcc" "tests/CMakeFiles/my_cuda_tests.dir/main.cpp.o.d"
   "/workspace/tests/test_autograd.cpp" "tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o" "gcc" "tests/CMakeFiles/my_cuda_tests.dir/test_autograd.cpp.o.d"
-  "/workspace/tests/test_linear.cpp" "tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o" "gcc" "tests/CMakeFiles/my_cuda_tests.dir/test_linear.cpp.o.d"
   "/workspace/tests/test_module.cpp" "tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o" "gcc" "tests/CMakeFiles/my_cuda_tests.dir/test_module.cpp.o.d"
   "/workspace/tests/test_tensor.cpp" "tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o" "gcc" "tests/CMakeFiles/my_cuda_tests.dir/test_tensor.cpp.o.d"
   )

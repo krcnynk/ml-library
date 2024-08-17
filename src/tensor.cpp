@@ -2,7 +2,7 @@
 // #include <cuda_runtime.h>
 
 #include "tensor.h"
-
+#include <algorithm>
 extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
 extern float elapsedTime;
 
@@ -31,7 +31,6 @@ extern float elapsedTime;
 
 namespace ml_framework
 {
-
     // Initialize the cuBLAS handle, Temporarily Global
     cublasHandle_t Tensor::cublas_handle = nullptr;
 
@@ -78,7 +77,7 @@ namespace ml_framework
     {
         std::vector<int> v_size = tensor.m_shape;
         float *data = tensor.h_data;
-
+        std::cout << std::fixed << std::setprecision(2);
         for (int i = 0; i < tensor.data_size; ++i)
         {
 
@@ -113,7 +112,6 @@ namespace ml_framework
         : m_shape(tensor.shape())
     {
         initializeCuBLAS();
-        std::cout << "Copy CONSTRUCTOR" << std::endl;
         data_size = prod_shape(m_shape);
         h_data = new float[data_size];
         std::memcpy(this->h_data, tensor.h_data, sizeof(*h_data) * static_cast<long unsigned int>(data_size));
@@ -127,9 +125,8 @@ namespace ml_framework
     {
         initializeCuBLAS();
         data_size = prod_shape(m_shape);
-        this->h_data = new float[data_size];
-        std::memset(this->h_data, 0, sizeof(*h_data) * static_cast<long unsigned int>(data_size));
-        // Initialize CUDA resources
+        h_data = new float[data_size];
+        std::fill_n(h_data, data_size, 1.0f);
         allocateDeviceMemory();
     }
 
@@ -218,7 +215,7 @@ namespace ml_framework
     }
 
     Tensor Tensor::matmul(const Tensor &other) const
-    {
+    {   
         if (m_shape.size() != 2 || other.m_shape.size() != 2)
         {
             throw std::runtime_error("Matrix multiplication requires 2D tensors.");
@@ -236,17 +233,31 @@ namespace ml_framework
         const float beta = 0.0f;
         int m = m_shape[0];       // A rows
         int k = m_shape[1];       // A columns
-        int n = other.m_shape[1]; // B columns
+        int n = other.m_shape[1]; // B columns 5 3
 
         cublasSetPointerMode(cublas_handle, CUBLAS_POINTER_MODE_HOST);
-        cublasStatus_t status = cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, m, n, k, &alpha,
+        cublasStatus_t status = cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha,
                                             other.d_data, n, d_data, k, &beta, result_matrix.d_data, n);
         CHECK_CUBLAS_STATUS(status);
         result_matrix.transferDataToHost();
         return result_matrix;
     }
 
-    bool Tensor::operator==(const Tensor &other)
+    Tensor &Tensor::operator=(const Tensor &other)
+    {
+        if (this != &other)
+        {
+            data_size = prod_shape(other.shape());
+            this->m_shape = other.shape();
+            this->h_data = new float[data_size];
+            std::memcpy(this->h_data, other.host_data(), sizeof(*this->h_data) * static_cast<long unsigned int>(data_size));
+            allocateDeviceMemory();
+        }
+
+        return *this;
+    }
+
+    bool Tensor::operator==(const Tensor &other) const
     {
         for (int i = 0; i < other.data_size; i++)
         {
