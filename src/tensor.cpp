@@ -3,6 +3,8 @@
 
 #include "tensor.h"
 #include <algorithm>
+#include <random>
+
 extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
 extern float elapsedTime;
 
@@ -124,10 +126,20 @@ namespace ml_framework
         : m_shape(shape)
     {
         initializeCuBLAS();
+        // FIXME: Need recap here
+        std::random_device rd;  // Obtain a random number from hardware
+        std::mt19937 gen(rd()); // Seed the generator with rd()
+        // Create a uniform distribution for floating-point numbers in the range [0.0, 1.0]
+        std::uniform_real_distribution<> dis(0.0, 1.0);
+        // Fill the vector with random numbers using std::generate and a lambda function
+
         data_size = prod_shape(m_shape);
         h_data = new float[data_size];
-        std::fill_n(h_data, data_size, 1.0f);
+        // std::fill_n(h_data, data_size, 1.0f);
+        std::generate(h_data, h_data + data_size, [&]()
+                      { return dis(gen); });
         allocateDeviceMemory();
+        std::cout << *this << std::endl;
     }
 
     // TODO: various member functions/constructors need to be done
@@ -215,7 +227,7 @@ namespace ml_framework
     }
 
     Tensor Tensor::matmul(const Tensor &other) const
-    {   
+    {
         if (m_shape.size() != 2 || other.m_shape.size() != 2)
         {
             throw std::runtime_error("Matrix multiplication requires 2D tensors.");
