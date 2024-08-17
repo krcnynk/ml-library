@@ -35,16 +35,6 @@ namespace ml_framework
     // Initialize the cuBLAS handle, Temporarily Global
     cublasHandle_t Tensor::cublas_handle = nullptr;
 
-    // static int int value) depreciated
-    // {
-    //     if (value > static_cast<int>(std::numeric_limits<int>::max()))
-    //     {
-    //         std::string error_msg = "int to int conversion error.";
-    //         throw std::runtime_error(error_msg);
-    //     }
-    //     return static_cast<int>(value);
-    // }
-
     static std::string getCuBlasErrorString(cublasStatus_t status)
     {
         switch (status)
@@ -192,7 +182,7 @@ namespace ml_framework
         return d_data;
     }
 
-    Tensor Tensor::operator+(const Tensor &other)
+    Tensor Tensor::operator+(const Tensor &other) const
     {
         if (m_shape != other.m_shape)
         {
@@ -208,7 +198,7 @@ namespace ml_framework
         return result_tensor;
     }
 
-    Tensor Tensor::operator*(const Tensor &other)
+    Tensor Tensor::operator*(const Tensor &other) const
     {
         if (m_shape != other.m_shape)
         {
@@ -220,14 +210,14 @@ namespace ml_framework
         // const int blocksPerGrid = (static_cast<int>(other.data_size) + threadsPerBlock - 1) / threadsPerBlock;
         cudaError_t error = elementWiseMultiplyWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(other.data_size));
         std::cout << elapsedTime << std::endl;
-        
+
         CHECK_CUDA_ERROR(error);
         result_tensor.transferDataToHost();
 
         return result_tensor;
     }
 
-    Tensor Tensor::matmul(const Tensor &other)
+    Tensor Tensor::matmul(const Tensor &other) const
     {
         if (m_shape.size() != 2 || other.m_shape.size() != 2)
         {
@@ -302,12 +292,6 @@ namespace ml_framework
         {
             cublasStatus_t status = cublasCreate(&cublas_handle);
             CHECK_CUBLAS_STATUS(status);
-            // if (status != CUBLAS_STATUS_SUCCESS)
-            // {
-            //     // std::cerr << "cublasCreate failed!" << std::endl;
-            //     std::string error_msg = "cublasCreate failed!";
-            //     throw std::runtime_error(error_msg);
-            // }
         }
     }
 

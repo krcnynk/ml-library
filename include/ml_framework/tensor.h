@@ -46,22 +46,22 @@ namespace ml_framework
         float *device_data();
 
         // Overload + operator
-        Tensor operator+(const Tensor &other);
+        Tensor operator+(const Tensor &other) const;
 
         // Overload * operator (element-wise multiplication)
-        Tensor operator*(const Tensor &other);
+        Tensor operator*(const Tensor &other) const;
 
         // TODO: -Weffc+ because of pointer data members, implement =
-        Tensor operator=(const Tensor &other);
+        Tensor operator=(const Tensor &other) const;
 
         // Matrix multiplication using cuBLAS
-        Tensor matmul(const Tensor &other);
+        Tensor matmul(const Tensor &other) const;
         // Cleanup CUDA resources
         ~Tensor();
 
-        bool operator==( const Tensor &other);
-
+        bool operator==(const Tensor &other);
         friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
+
         void transferDataToDevice() const;
         void transferDataToHost() const;
         static void initializeCuBLAS();
