@@ -28,8 +28,8 @@ include_directories(${GTEST_INCLUDE_DIRS})
 include_directories(${CUDAToolkit_INCLUDE_DIRS})
 include_directories(include/ml_framework)
 
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+if(NOT CXXMAKE_BUILD_TYPE)
+    set(CXXMAKE_BUILD_TYPE Debug)
 endif()
 
 # Enable testing

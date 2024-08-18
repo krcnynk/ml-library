@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include "tensor.h"
 #include "linear.h"
+#include "relu.h"
 #include "module.h"
-
 
 namespace ml_framework
 {
@@ -31,13 +31,17 @@ namespace ml_framework
         const Tensor data_tensor(shape, data);
 
         Module module = Module();
-        module.add_module("linear1",std::make_shared<Linear>(5,15));
-        module.add_module("linear1",std::make_shared<Linear>(15,550));
-        module.add_module("linear1",std::make_shared<Linear>(550,1550));
-        module.add_module("linear1",std::make_shared<Linear>(1550,5));
+        module.add_module("linear1", std::make_shared<Linear>(5, 15));
+        module.add_module("relu1", std::make_shared<ReLU>());
+        module.add_module("linear2", std::make_shared<Linear>(15, 550));
+        module.add_module("relu2", std::make_shared<ReLU>());
+        module.add_module("linear3", std::make_shared<Linear>(550, 1550));
+        module.add_module("relu3", std::make_shared<ReLU>());
+        module.add_module("linear4", std::make_shared<Linear>(1550, 5));
         std::unique_ptr<Tensor> output = module.forward(data_tensor);
 
         std::cout << *output << std::endl;
+
         // // Check the shape
         // EXPECT_EQ(registered_tensor.shape(), shape);
         // EXPECT_TRUE(registered_tensor == tensor);

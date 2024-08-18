@@ -179,7 +179,7 @@ ml_framework_OBJECTS = \
 
 # External object files for target ml_framework
 ml_framework_EXTERNAL_OBJECTS = \
-"/workspace/build/src/CMakeFiles/cuda_objs.dir/tensor.cu.o"
+"/workspace/build/src/CMakeFiles/cuda_objs.dir/kernel.cu.o"
 
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/tensor.cpp.o
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/autograd.cpp.o
@@ -188,7 +188,7 @@ src/libml_framework.a: src/CMakeFiles/ml_framework.dir/linear.cpp.o
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/relu.cpp.o
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/mse_loss.cpp.o
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/utils.cpp.o
-src/libml_framework.a: src/CMakeFiles/cuda_objs.dir/tensor.cu.o
+src/libml_framework.a: src/CMakeFiles/cuda_objs.dir/kernel.cu.o
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/build.make
 src/libml_framework.a: src/CMakeFiles/ml_framework.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libml_framework.a"

@@ -168,6 +168,30 @@ autograd.cpp.s:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ml_framework.dir/build.make src/CMakeFiles/ml_framework.dir/autograd.cpp.s
 .PHONY : autograd.cpp.s
 
+kernel.o: kernel.cu.o
+.PHONY : kernel.o
+
+# target to build an object file
+kernel.cu.o:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/kernel.cu.o
+.PHONY : kernel.cu.o
+
+kernel.i: kernel.cu.i
+.PHONY : kernel.i
+
+# target to preprocess a source file
+kernel.cu.i:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/kernel.cu.i
+.PHONY : kernel.cu.i
+
+kernel.s: kernel.cu.s
+.PHONY : kernel.s
+
+# target to generate assembly for a file
+kernel.cu.s:
+	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/kernel.cu.s
+.PHONY : kernel.cu.s
+
 linear.o: linear.cpp.o
 .PHONY : linear.o
 
@@ -288,30 +312,6 @@ tensor.cpp.s:
 	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/ml_framework.dir/build.make src/CMakeFiles/ml_framework.dir/tensor.cpp.s
 .PHONY : tensor.cpp.s
 
-tensor.o: tensor.cu.o
-.PHONY : tensor.o
-
-# target to build an object file
-tensor.cu.o:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.o
-.PHONY : tensor.cu.o
-
-tensor.i: tensor.cu.i
-.PHONY : tensor.i
-
-# target to preprocess a source file
-tensor.cu.i:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.i
-.PHONY : tensor.cu.i
-
-tensor.s: tensor.cu.s
-.PHONY : tensor.s
-
-# target to generate assembly for a file
-tensor.cu.s:
-	cd /workspace/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cuda_objs.dir/build.make src/CMakeFiles/cuda_objs.dir/tensor.cu.s
-.PHONY : tensor.cu.s
-
 utils.o: utils.cpp.o
 .PHONY : utils.o
 
@@ -349,6 +349,9 @@ help:
 	@echo "... autograd.o"
 	@echo "... autograd.i"
 	@echo "... autograd.s"
+	@echo "... kernel.o"
+	@echo "... kernel.i"
+	@echo "... kernel.s"
 	@echo "... linear.o"
 	@echo "... linear.i"
 	@echo "... linear.s"
@@ -361,9 +364,6 @@ help:
 	@echo "... relu.o"
 	@echo "... relu.i"
 	@echo "... relu.s"
-	@echo "... tensor.o"
-	@echo "... tensor.i"
-	@echo "... tensor.s"
 	@echo "... tensor.o"
 	@echo "... tensor.i"
 	@echo "... tensor.s"

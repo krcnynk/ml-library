@@ -7,11 +7,11 @@ CUDA_DEFINES =
 
 CUDA_INCLUDES = --options-file CMakeFiles/ml_framework.dir/includes_CUDA.rsp
 
-CUDA_FLAGS = -g -std=c++17 "--generate-code=arch=compute_75,code=[compute_75,sm_75]" -ggdb -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion
+CUDA_FLAGS = -std=c++17 "--generate-code=arch=compute_75,code=[compute_75,sm_75]" -ggdb -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion
 
 CXX_DEFINES = 
 
 CXX_INCLUDES = -I/workspace/include/ml_framework -isystem /usr/local/cuda/targets/x86_64-linux/include
 
-CXX_FLAGS = -g -ggdb -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion
+CXX_FLAGS = -ggdb -O0 -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion
 

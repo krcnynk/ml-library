@@ -69,22 +69,22 @@ include src/CMakeFiles/cuda_objs.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/cuda_objs.dir/flags.make
 
-src/CMakeFiles/cuda_objs.dir/tensor.cu.o: src/CMakeFiles/cuda_objs.dir/flags.make
-src/CMakeFiles/cuda_objs.dir/tensor.cu.o: src/CMakeFiles/cuda_objs.dir/includes_CUDA.rsp
-src/CMakeFiles/cuda_objs.dir/tensor.cu.o: /workspace/src/tensor.cu
-src/CMakeFiles/cuda_objs.dir/tensor.cu.o: src/CMakeFiles/cuda_objs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object src/CMakeFiles/cuda_objs.dir/tensor.cu.o"
-	cd /workspace/build/src && /usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT src/CMakeFiles/cuda_objs.dir/tensor.cu.o -MF CMakeFiles/cuda_objs.dir/tensor.cu.o.d -x cu -c /workspace/src/tensor.cu -o CMakeFiles/cuda_objs.dir/tensor.cu.o
+src/CMakeFiles/cuda_objs.dir/kernel.cu.o: src/CMakeFiles/cuda_objs.dir/flags.make
+src/CMakeFiles/cuda_objs.dir/kernel.cu.o: src/CMakeFiles/cuda_objs.dir/includes_CUDA.rsp
+src/CMakeFiles/cuda_objs.dir/kernel.cu.o: /workspace/src/kernel.cu
+src/CMakeFiles/cuda_objs.dir/kernel.cu.o: src/CMakeFiles/cuda_objs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object src/CMakeFiles/cuda_objs.dir/kernel.cu.o"
+	cd /workspace/build/src && /usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT src/CMakeFiles/cuda_objs.dir/kernel.cu.o -MF CMakeFiles/cuda_objs.dir/kernel.cu.o.d -x cu -c /workspace/src/kernel.cu -o CMakeFiles/cuda_objs.dir/kernel.cu.o
 
-src/CMakeFiles/cuda_objs.dir/tensor.cu.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/cuda_objs.dir/tensor.cu.i"
+src/CMakeFiles/cuda_objs.dir/kernel.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/cuda_objs.dir/kernel.cu.i"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-src/CMakeFiles/cuda_objs.dir/tensor.cu.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/cuda_objs.dir/tensor.cu.s"
+src/CMakeFiles/cuda_objs.dir/kernel.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/cuda_objs.dir/kernel.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-cuda_objs: src/CMakeFiles/cuda_objs.dir/tensor.cu.o
+cuda_objs: src/CMakeFiles/cuda_objs.dir/kernel.cu.o
 cuda_objs: src/CMakeFiles/cuda_objs.dir/build.make
 .PHONY : cuda_objs
 

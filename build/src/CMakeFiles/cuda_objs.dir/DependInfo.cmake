@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/workspace/src/tensor.cu" "src/CMakeFiles/cuda_objs.dir/tensor.cu.o" "gcc" "src/CMakeFiles/cuda_objs.dir/tensor.cu.o.d"
+  "/workspace/src/kernel.cu" "src/CMakeFiles/cuda_objs.dir/kernel.cu.o" "gcc" "src/CMakeFiles/cuda_objs.dir/kernel.cu.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

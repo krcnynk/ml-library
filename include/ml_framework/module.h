@@ -1,13 +1,12 @@
-#ifndef ML_FRAMEWORK_MODULE_H
-#define ML_FRAMEWORK_MODULE_H
+#ifndef MODULE_H
+#define MODULE_H
 
 #include <vector>
-#include <unordered_map>
 #include <string>
 #include <memory>
 #include <stdexcept>
-#include "tensor.h"
 #include <list>
+#include "tensor.h"
 
 namespace ml_framework
 {
@@ -15,7 +14,7 @@ namespace ml_framework
     {
     public:
         Module() = default; // calls list()
-        virtual ~Module() = default;
+
         // virtual Tensor forward(const Tensor &input) = 0;
         // void register_parameter(const std::string &name, const Tensor &tensor);
         void add_module(const std::string &name, std::shared_ptr<Module> module);
@@ -23,6 +22,7 @@ namespace ml_framework
         std::shared_ptr<Module> get_module(const std::string &name) const;
         // FIXME: Double check this!
         // std::vector<Tensor *> parameters();
+        virtual ~Module() = default;
         virtual std::unique_ptr<Tensor> forward(const Tensor &input);
 
     protected:

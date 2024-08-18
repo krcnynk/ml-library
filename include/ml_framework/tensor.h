@@ -12,12 +12,9 @@ RESTORE_WARNINGS
 #include <iostream>
 #include <iomanip>
 #include <memory>
-
-// extern "C"
-// {
-//     __global__ void elementWiseMultiplyKernel(const float *d_a, const float *d_b, float *d_c, int n);
-// }
-// using custom_type = float;
+#include <algorithm>
+#include <random>
+#include "config.h"
 
 namespace ml_framework
 {
@@ -38,6 +35,7 @@ namespace ml_framework
 
         // Getter for shape
         const std::vector<int> &shape() const;
+        int size() const;
 
         float *host_data() const;
         float *host_data();
@@ -50,8 +48,8 @@ namespace ml_framework
         Tensor operator*(const Tensor &other) const;
         Tensor matmul(const Tensor &other) const;
         ~Tensor();
-        
-        Tensor& operator=(const Tensor &other);
+
+        Tensor &operator=(const Tensor &other);
 
         bool operator==(const Tensor &other) const;
         void transferDataToDevice() const;

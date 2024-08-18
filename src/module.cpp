@@ -1,5 +1,9 @@
 #include "module.h"
 #include "linear.h"
+#include "relu.h"
+#include "tensor.h"
+#include <typeinfo>
+
 namespace ml_framework
 {
     // void Module::register_parameter(const std::string &name,const Tensor &tensor)
@@ -49,17 +53,25 @@ namespace ml_framework
     std::unique_ptr<Tensor> Module::forward(const Tensor &input)
     {
         std::unique_ptr<Tensor> output = std::make_unique<Tensor>(input);
-        for (auto &pair : modules_)
+        for (auto &[name, module] : modules_)
         {
-            if (auto linearPtr = std::dynamic_pointer_cast<Linear>(pair.second))
-            {
-                std::cout << "aaa free" << std::endl;
-                output = linearPtr->forward(*output); // Call Linear's forward
-            }
-            else
-            {
-                // Do nothing for the time being
-            }
+            output = module->forward(*output); // Call Linear's forward
+            // std::cout << "Type of forward: " << typeid(module->forward).name() << std::endl;
+
+            // if (auto linearPtr = std::dynamic_pointer_cast<Linear>(module))
+            // {
+            //     std::cout << "linear dynamic pointer" << std::endl;
+            //     output = linearPtr->forward(*output); // Call Linear's forward
+            // }
+            // else if (auto reluPtr  = std::dynamic_pointer_cast<ReLU>(module))
+            // {
+            //     std::cout << "relu dynamic pointer" << std::endl;
+            //     output = reluPtr ->forward(*output); // Call Linear's forward
+            // }
+            // else
+            // {
+            //     //Do nothing
+            // }
         }
         return output;
     }

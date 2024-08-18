@@ -1,2 +1,2 @@
-/usr/bin/ar qc libml_framework.a CMakeFiles/ml_framework.dir/tensor.cpp.o CMakeFiles/ml_framework.dir/autograd.cpp.o CMakeFiles/ml_framework.dir/module.cpp.o CMakeFiles/ml_framework.dir/linear.cpp.o CMakeFiles/ml_framework.dir/relu.cpp.o CMakeFiles/ml_framework.dir/mse_loss.cpp.o CMakeFiles/ml_framework.dir/utils.cpp.o CMakeFiles/cuda_objs.dir/tensor.cu.o
+/usr/bin/ar qc libml_framework.a CMakeFiles/ml_framework.dir/tensor.cpp.o CMakeFiles/ml_framework.dir/autograd.cpp.o CMakeFiles/ml_framework.dir/module.cpp.o CMakeFiles/ml_framework.dir/linear.cpp.o CMakeFiles/ml_framework.dir/relu.cpp.o CMakeFiles/ml_framework.dir/mse_loss.cpp.o CMakeFiles/ml_framework.dir/utils.cpp.o CMakeFiles/cuda_objs.dir/kernel.cu.o
 /usr/bin/ranlib libml_framework.a

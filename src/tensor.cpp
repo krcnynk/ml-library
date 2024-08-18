@@ -2,68 +2,13 @@
 // #include <cuda_runtime.h>
 
 #include "tensor.h"
-#include <algorithm>
-#include <random>
-
-extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
-extern float elapsedTime;
-
-#define CHECK_CUDA_ERROR(err)                          \
-    do                                                 \
-    {                                                  \
-        cudaError_t err_code = (err);                  \
-        if (err_code != cudaSuccess)                   \
-        {                                              \
-            std::string error_msg = "CUDA error: ";    \
-            error_msg += cudaGetErrorString(err_code); \
-            throw std::runtime_error(error_msg);       \
-        }                                              \
-    } while (0)
-
-#define CHECK_CUBLAS_STATUS(status)                    \
-    do                                                 \
-    {                                                  \
-        if (status != CUBLAS_STATUS_SUCCESS)           \
-        {                                              \
-            std::string error_msg = "cuBLAS error: ";  \
-            error_msg += getCuBlasErrorString(status); \
-            throw std::runtime_error(error_msg);       \
-        }                                              \
-    } while (0)
+// extern cudaError_t elementWiseMultiplyWrapper(const float *d_a, const float *d_b, float *d_c, int n);
+// extern float elapsedTime;
 
 namespace ml_framework
 {
     // Initialize the cuBLAS handle, Temporarily Global
     cublasHandle_t Tensor::cublas_handle = nullptr;
-
-    static std::string getCuBlasErrorString(cublasStatus_t status)
-    {
-        switch (status)
-        {
-        case CUBLAS_STATUS_SUCCESS:
-            return "CUBLAS_STATUS_SUCCESS";
-        case CUBLAS_STATUS_NOT_INITIALIZED:
-            return "CUBLAS_STATUS_NOT_INITIALIZED";
-        case CUBLAS_STATUS_ALLOC_FAILED:
-            return "CUBLAS_STATUS_ALLOC_FAILED";
-        case CUBLAS_STATUS_INVALID_VALUE:
-            return "CUBLAS_STATUS_INVALID_VALUE";
-        case CUBLAS_STATUS_ARCH_MISMATCH:
-            return "CUBLAS_STATUS_ARCH_MISMATCH";
-        case CUBLAS_STATUS_MAPPING_ERROR:
-            return "CUBLAS_STATUS_MAPPING_ERROR";
-        case CUBLAS_STATUS_EXECUTION_FAILED:
-            return "CUBLAS_STATUS_EXECUTION_FAILED";
-        case CUBLAS_STATUS_INTERNAL_ERROR:
-            return "CUBLAS_STATUS_INTERNAL_ERROR";
-        case CUBLAS_STATUS_NOT_SUPPORTED:
-            return "CUBLAS_STATUS_NOT_SUPPORTED";
-        case CUBLAS_STATUS_LICENSE_ERROR:
-            return "CUBLAS_STATUS_LICENSE_ERROR";
-        default:
-            return "Unknown cuBLAS status";
-        }
-    }
 
     static int prod_shape(const std::vector<int> &shape)
     {
@@ -130,7 +75,7 @@ namespace ml_framework
         std::random_device rd;  // Obtain a random number from hardware
         std::mt19937 gen(rd()); // Seed the generator with rd()
         // Create a uniform distribution for floating-point numbers in the range [0.0, 1.0]
-        std::uniform_real_distribution<> dis(0.0, 1.0);
+        std::uniform_real_distribution<> dis(-1.0, 1.0);
         // Fill the vector with random numbers using std::generate and a lambda function
 
         data_size = prod_shape(m_shape);
@@ -139,14 +84,14 @@ namespace ml_framework
         std::generate(h_data, h_data + data_size, [&]()
                       { return dis(gen); });
         allocateDeviceMemory();
-        std::cout << *this << std::endl;
+        // std::cout << *this << std::endl;
     }
 
     // TODO: various member functions/constructors need to be done
     ///////////////////////////////////////////////////
     // Tensor::Tensor()
     // {
-    //     return NULL;
+    //     retur n NULL;
     // }
     // Tensor &Tensor::operator=(const Tensor &other)
     // {
@@ -166,6 +111,10 @@ namespace ml_framework
     // }
     //////////////////////////////////////////////////////////////////////////////
 
+    int Tensor::size() const
+    {
+        return data_size;
+    }
     const std::vector<int> &Tensor::shape() const
     {
         return m_shape;
@@ -215,14 +164,13 @@ namespace ml_framework
         }
 
         Tensor result_tensor = Tensor(other);
-        // const int threadsPerBlock = 256;
-        // const int blocksPerGrid = (static_cast<int>(other.data_size) + threadsPerBlock - 1) / threadsPerBlock;
-        cudaError_t error = elementWiseMultiplyWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(other.data_size));
-        std::cout << elapsedTime << std::endl;
 
-        CHECK_CUDA_ERROR(error);
+        // Launch the kernel
+        cudaError_t err = elementWiseMultiplyKernelWrapper(this->d_data, other.d_data,
+                                                           result_tensor.d_data, this->data_size);
+        CHECK_CUDA_ERROR(err);
+        // std::cout << kernel::elapsedTime << std::endl;
         result_tensor.transferDataToHost();
-
         return result_tensor;
     }
 

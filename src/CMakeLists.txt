@@ -1,5 +1,5 @@
 # Define the CUDA source files
-set(CUDA_SOURCES tensor.cu)
+set(CUDA_SOURCES kernel.cu)
 
 # Object library
 add_library(cuda_objs OBJECT ${CUDA_SOURCES})
@@ -42,3 +42,4 @@ target_link_libraries(ml_framework PRIVATE CUDA::cudart CUDA::cublas)
 # Include directories for Eigen and any other headers
 # target_include_directories(ml_framework PRIVATE ${EIGEN3_INCLUDE_DIR})
 # target_include_directories(ml_framework PRIVATE ${CUDA_INCLUDE_DIRS})
+

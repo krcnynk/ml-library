@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cuda_objs.dir/tensor.cu.o"
-  "CMakeFiles/cuda_objs.dir/tensor.cu.o.d"
+  "CMakeFiles/cuda_objs.dir/kernel.cu.o"
+  "CMakeFiles/cuda_objs.dir/kernel.cu.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

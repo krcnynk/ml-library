@@ -1,4 +1,4 @@
-src/CMakeFiles/cuda_objs.dir/tensor.cu.o : /workspace/src/tensor.cu \
+src/CMakeFiles/cuda_objs.dir/kernel.cu.o : /workspace/src/kernel.cu \
     /usr/include/stdc-predef.h \
     /usr/local/cuda/targets/x86_64-linux/include/cuda_runtime.h \
     /usr/local/cuda/targets/x86_64-linux/include/crt/host_config.h \

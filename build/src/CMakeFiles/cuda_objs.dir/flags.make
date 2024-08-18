@@ -6,5 +6,5 @@ CUDA_DEFINES =
 
 CUDA_INCLUDES = --options-file CMakeFiles/cuda_objs.dir/includes_CUDA.rsp
 
-CUDA_FLAGS = -g -std=c++20 "--generate-code=arch=compute_75,code=[compute_75,sm_75]"
+CUDA_FLAGS = -std=c++20 "--generate-code=arch=compute_75,code=[compute_75,sm_75]"
 
