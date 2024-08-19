@@ -13,7 +13,9 @@ namespace ml_framework
     public:
         ReLU() = default;
         ~ReLU() override = default;
-        std::unique_ptr<Tensor> forward(const Tensor &input) override;
+        std::unique_ptr<Tensor> forward(const Tensor &input,bool transpose = false) override;
+        std::unique_ptr<Tensor> backward(const Tensor &input) override;
+        // Tensor input() override;
     };
 
 }

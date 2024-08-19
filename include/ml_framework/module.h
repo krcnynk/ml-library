@@ -20,14 +20,20 @@ namespace ml_framework
         void add_module(const std::string &name, std::shared_ptr<Module> module);
         // Tensor &get_parameter(const std::string &name) const;
         std::shared_ptr<Module> get_module(const std::string &name) const;
-        // FIXME: Double check this!
-        // std::vector<Tensor *> parameters();
+        float MSE(const Tensor &input, const Tensor &input2);
         virtual ~Module() = default;
-        virtual std::unique_ptr<Tensor> forward(const Tensor &input);
+        virtual std::unique_ptr<Tensor> forward(const Tensor &input, bool transpose = false);
+        virtual std::unique_ptr<Tensor> backward(const Tensor &prediction);
+        virtual Tensor input();
+        virtual void weightUpdate(float learning_rate,Tensor delta);
+        std::unique_ptr<Tensor> train(const Tensor &input, const Tensor &target);
+        
 
     protected:
         // std::unordered_map<std::string, Tensor *> parameters_;
+        Tensor input_;
         std::list<std::pair<std::string, std::shared_ptr<Module>>> modules_; // Submodules
     };
 }
+
 #endif

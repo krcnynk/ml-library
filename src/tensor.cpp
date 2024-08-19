@@ -72,8 +72,9 @@ namespace ml_framework
     {
         initializeCuBLAS();
         // FIXME: Need recap here
-        std::random_device rd;  // Obtain a random number from hardware
-        std::mt19937 gen(rd()); // Seed the generator with rd()
+        // std::random_device rd;  // Obtain a random number from hardware
+        unsigned int seed = 1234;
+        std::mt19937 gen(seed); // Seed the generator with rd()
         // Create a uniform distribution for floating-point numbers in the range [0.0, 1.0]
         std::uniform_real_distribution<> dis(-1.0, 1.0);
         // Fill the vector with random numbers using std::generate and a lambda function
@@ -140,6 +141,20 @@ namespace ml_framework
         return d_data;
     }
 
+    float Tensor::sum() const
+    {
+        if (!h_data)
+        {
+            throw std::runtime_error("Host data is nullptr.");
+        }
+        float sum = 0;
+        for (int i = 0; i < data_size; i++)
+        {
+            sum = sum + h_data[i];
+        }
+        return sum;
+    }
+
     Tensor Tensor::operator+(const Tensor &other) const
     {
         if (m_shape != other.m_shape)
@@ -149,6 +164,22 @@ namespace ml_framework
 
         Tensor result_tensor(*this);
         const float alpha = 1.0f;
+
+        cublasStatus_t status = cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
+        CHECK_CUBLAS_STATUS(status);
+        result_tensor.transferDataToHost();
+        return result_tensor;
+    }
+
+    Tensor Tensor::operator-(const Tensor &other) const
+    {
+        if (m_shape != other.m_shape)
+        {
+            throw std::runtime_error("Tensor m_shapes must match for addition.");
+        }
+
+        Tensor result_tensor(*this);
+        const float alpha = -1.0f;
 
         cublasStatus_t status = cublasSaxpy(cublas_handle, this->data_size, &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
         CHECK_CUBLAS_STATUS(status);
@@ -174,14 +205,50 @@ namespace ml_framework
         return result_tensor;
     }
 
+    Tensor operator*(float scalar, const Tensor &other)
+    {
+        Tensor dummy_tensor = Tensor(other);
+        Tensor result_tensor = Tensor(other);
+        dummy_tensor.h_data = new float[dummy_tensor.size()];
+        std::fill_n(dummy_tensor.h_data, dummy_tensor.data_size, scalar);
+        // Launch the kernel
+        cudaError_t err = elementWiseMultiplyKernelWrapper(dummy_tensor.d_data, other.d_data,
+                                                           result_tensor.d_data, dummy_tensor.data_size);
+        CHECK_CUDA_ERROR(err);
+        // std::cout << kernel::elapsedTime << std::endl;
+        result_tensor.transferDataToHost();
+        return result_tensor;
+    }
+
+    Tensor Tensor::transpose() const
+    {   
+        std::vector<int> transposed_shape = {this->m_shape[1], this->m_shape[0]};
+        Tensor return_tensor = Tensor(transposed_shape,this->h_data);
+
+        for (int i = 0; i < return_tensor.m_shape[0]; ++i)
+        {
+            for (int j = 0; j < return_tensor.m_shape[1]; ++j)
+            {
+                // Transpose operation: swap rows and columns
+                return_tensor.h_data[j * return_tensor.m_shape[0] + i] = this->h_data[i * return_tensor.m_shape[1] + j];
+            }
+        }
+        
+        return_tensor.transferDataToDevice();
+        return return_tensor;
+    }
+
     Tensor Tensor::matmul(const Tensor &other) const
     {
+
         if (m_shape.size() != 2 || other.m_shape.size() != 2)
         {
             throw std::runtime_error("Matrix multiplication requires 2D tensors.");
         }
         if (m_shape[1] != other.m_shape[0])
         {
+            printVector(this->shape());
+            printVector(other.shape());
             throw std::runtime_error("Matrix dimensions must align for multiplication.");
         }
 

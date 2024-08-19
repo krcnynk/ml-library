@@ -16,8 +16,9 @@
 
 extern float elapsedTime;
 extern cudaError_t elementWiseMultiplyKernelWrapper(const float *d_a, const float *d_b, float *d_c, int n);
-extern  cudaError_t reluKernelWrapper(float *d_input, float *d_output, int n);
-extern  cudaError_t leakyReluKernelWrapper(float *d_input, float *d_output,float gradient, int n);
+extern cudaError_t reluKernelWrapper(float *d_input, float *d_output, int n);
+extern cudaError_t leakyReluKernelWrapper(float *d_input, float *d_output, float gradient, int n);
+extern cudaError_t d_leakyReluKernelWrapper(float *d_input, float *d_output, float gradient, int n);
 
 // extern __global__ void leakyReluKernel();
 
@@ -71,6 +72,15 @@ inline std::string getCuBlasErrorString(cublasStatus_t status)
     default:
         return "Unknown cuBLAS status";
     }
+}
+
+inline void printVector(const std::vector<int> &vec)
+{
+    for (const auto &element : vec)
+    {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
 }
 
 #endif // CONFIG_H

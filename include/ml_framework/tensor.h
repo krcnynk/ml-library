@@ -45,16 +45,20 @@ namespace ml_framework
 
         // Overload + operator
         Tensor operator+(const Tensor &other) const;
+        Tensor operator-(const Tensor &other) const;
         Tensor operator*(const Tensor &other) const;
+        Tensor transpose() const;
+        friend Tensor operator*(float scalar, const Tensor &tensor);
         Tensor matmul(const Tensor &other) const;
         ~Tensor();
-
         Tensor &operator=(const Tensor &other);
 
+        float sum() const;
         bool operator==(const Tensor &other) const;
         void transferDataToDevice() const;
         void transferDataToHost() const;
 
+    
         friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
         static void initializeCuBLAS();
         static void cleanupCuBLAS();

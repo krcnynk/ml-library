@@ -28,7 +28,9 @@ namespace ml_framework
     {
         const std::vector<int> shape{1, 5};
         float *data = new float[shape[1]]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+        float *target = new float[shape[1]]{100.0f, 0.0f, 0.0f, 0.0f, 0.0f};
         const Tensor data_tensor(shape, data);
+        const Tensor target_tensor(shape, target);
 
         Module module = Module();
         module.add_module("linear1", std::make_shared<Linear>(5, 15));
@@ -38,9 +40,11 @@ namespace ml_framework
         module.add_module("linear3", std::make_shared<Linear>(550, 1550));
         module.add_module("relu3", std::make_shared<ReLU>());
         module.add_module("linear4", std::make_shared<Linear>(1550, 5));
-        std::unique_ptr<Tensor> output = module.forward(data_tensor);
+        module.add_module("relu4", std::make_shared<ReLU>());
+        module.train(data_tensor,target_tensor);
 
-        std::cout << *output << std::endl;
+        // std::unique_ptr<Tensor> output = module.forward(data_tensor);
+        // std::cout << *output << std::endl;
 
         // // Check the shape
         // EXPECT_EQ(registered_tensor.shape(), shape);
@@ -48,7 +52,8 @@ namespace ml_framework
         // // Check that the data is not the same as the original data pointer
         // EXPECT_NE(registered_tensor.host_data(), data);
 
-        // delete[] data;
+        delete[] data;
+        delete[] target;
     }
 
     // TEST_F(TensorTest, ConstructorWithTensor)

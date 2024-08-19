@@ -32,6 +32,18 @@ __global__ void leakyReluKernel(float *d_input, float *d_output, float gradient,
     }
 }
 
+__global__ void d_leakyReluKernel(float *d_input, float *d_output, float gradient, int n)
+{
+    int idx = threadIdx.x + blockIdx.x * blockDim.x;
+    if (idx < n)
+    {
+        if (d_input[idx] > 0)
+            d_output[idx] = 1;
+        else
+            d_output[idx] = gradient;
+    }
+}
+
 cudaError_t elementWiseMultiplyKernelWrapper(const float *d_a, const float *d_b, float *d_c, int n)
 {
     // static float elapsedTime;
@@ -64,6 +76,7 @@ cudaError_t reluKernelWrapper(float *d_input, float *d_output, int n)
     return error;
 }
 
+
 cudaError_t leakyReluKernelWrapper(float *d_input, float *d_output,float gradient, int n)
 {
 
@@ -71,6 +84,17 @@ cudaError_t leakyReluKernelWrapper(float *d_input, float *d_output,float gradien
     const unsigned int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;
 
     leakyReluKernel<<<blocksPerGrid, threadsPerBlock>>>(d_input, d_output, gradient, n);
+    cudaError_t error = cudaGetLastError();
+    return error;
+}
+
+cudaError_t d_leakyReluKernelWrapper(float *d_input, float *d_output,float gradient, int n)
+{
+
+    const unsigned int threadsPerBlock = tpb;
+    const unsigned int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;
+
+    d_leakyReluKernel<<<blocksPerGrid, threadsPerBlock>>>(d_input, d_output, gradient, n);
     cudaError_t error = cudaGetLastError();
     return error;
 }
