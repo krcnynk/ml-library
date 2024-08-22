@@ -1,0 +1,25 @@
+"filename", "language", "Markdown", "C++", "CUDA C++", "Docker", "comment", "blank", "total"
+"d:\Github\ml-library\Dockerfile", "Docker", 0, 0, 0, 17, 24, 10, 51
+"d:\Github\ml-library\README.md", "Markdown", 7, 0, 0, 0, 0, 1, 8
+"d:\Github\ml-library\include\ml_framework\autograd.h", "C++", 0, 0, 0, 0, 1, 1, 2
+"d:\Github\ml-library\include\ml_framework\config.h", "C++", 0, 68, 0, 0, 9, 10, 87
+"d:\Github\ml-library\include\ml_framework\linear.h", "C++", 0, 25, 0, 0, 2, 4, 31
+"d:\Github\ml-library\include\ml_framework\module.h", "C++", 0, 29, 0, 0, 4, 6, 39
+"d:\Github\ml-library\include\ml_framework\mse_loss.h", "C++", 0, 4, 0, 0, 2, 0, 6
+"d:\Github\ml-library\include\ml_framework\relu.h", "C++", 0, 17, 0, 0, 1, 6, 24
+"d:\Github\ml-library\include\ml_framework\suppress_warnings.h", "C++", 0, 10, 0, 0, 1, 3, 14
+"d:\Github\ml-library\include\ml_framework\tensor.h", "C++", 0, 56, 0, 0, 9, 16, 81
+"d:\Github\ml-library\include\ml_framework\utils.h", "C++", 0, 5, 0, 0, 2, 1, 8
+"d:\Github\ml-library\src\autograd.cpp", "C++", 0, 0, 0, 0, 0, 1, 1
+"d:\Github\ml-library\src\kernel.cu", "CUDA C++", 0, 0, 72, 0, 10, 18, 100
+"d:\Github\ml-library\src\linear.cpp", "C++", 0, 32, 0, 0, 9, 9, 50
+"d:\Github\ml-library\src\module.cpp", "C++", 0, 90, 0, 0, 46, 21, 157
+"d:\Github\ml-library\src\mse_loss.cpp", "C++", 0, 0, 0, 0, 0, 1, 1
+"d:\Github\ml-library\src\relu.cpp", "C++", 0, 24, 0, 0, 1, 4, 29
+"d:\Github\ml-library\src\tensor.cpp", "C++", 0, 274, 0, 0, 41, 49, 364
+"d:\Github\ml-library\src\utils.cpp", "C++", 0, 0, 0, 0, 0, 1, 1
+"d:\Github\ml-library\tests\main.cpp", "C++", 0, 7, 0, 0, 0, 1, 8
+"d:\Github\ml-library\tests\test_autograd.cpp", "C++", 0, 0, 0, 0, 0, 1, 1
+"d:\Github\ml-library\tests\test_module.cpp", "C++", 0, 38, 0, 0, 183, 44, 265
+"d:\Github\ml-library\tests\test_tensor.cpp", "C++", 0, 170, 0, 0, 35, 43, 248
+"Total", "-", 7, 849, 72, 17, 380, 251, 1576

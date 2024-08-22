@@ -12,32 +12,30 @@ namespace ml_framework
         bias_ = Tensor(bias_shape);
     }
 
-    std::unique_ptr<Tensor> Linear::forward(const Tensor &input,bool transpose)
+    std::unique_ptr<Tensor> Linear::forward(const Tensor &input, bool transpose)
     {
-        Tensor internal_weight_ = weight_;
-        if(transpose)
+        Tensor dummy_weight = weight_;
+        if (transpose)
         {
-            printVector(internal_weight_.shape());
-            internal_weight_ = internal_weight_.transpose();
-            printVector(internal_weight_.shape());
+            dummy_weight = dummy_weight.transpose();
         }
-
-        this->input_ = input;
-        Tensor output = input_.matmul(internal_weight_); // row vector
-        output = output + bias_;
-
-        return std::make_unique<Tensor>(output);
+        Tensor output = input.matmul(dummy_weight) + bias_; // row vector
+        return std::make_unique<Tensor>(output + bias_);
     }
 
-    Tensor Linear::input()
-    {
-        return input_;
-    }
+    // void Linear::weightUpdate(float learning_rate, Tensor delta)
+    // {
+    //     std::cout << weight_ << std::endl;
+    //     Tensor tranposed_input = input_.transpose();
+    //     weight_ = weight_ - learning_rate * tranposed_input.matmul(delta);
+    //     std::cout << weight_ << std::endl;
+    // }
 
-    void Linear::weightUpdate(float learning_rate, Tensor delta)
-    {
-        // weight_ = weight_ - learning_rate * input_.matmul(delta);
-    }
+    // void Linear::transposeWeights()
+    // {
+    //     weight_ = weight_.transpose();
+    // }
+
     // std::unique_ptr<Tensor> Linear::backward(const Tensor &input)
     // {
     //     this->input_ = input;

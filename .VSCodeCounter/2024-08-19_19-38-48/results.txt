@@ -1,0 +1,120 @@
+Date : 2024-08-19 19:38:48
+Directory : d:\Github\ml-library
+Total : 60 files,  86843 codes, 763 comments, 23505 blanks, all 111111 lines
+
+Languages
++-------------+------------+------------+------------+------------+------------+
+| language    | files      | code       | comment    | blank      | total      |
++-------------+------------+------------+------------+------------+------------+
+| C++         |         24 |     82,822 |        420 |     22,670 |    105,912 |
+| YAML        |          1 |      1,043 |         40 |         46 |      1,129 |
+| C           |          6 |        827 |         61 |        164 |      1,052 |
+| CMake Cache |          1 |        636 |          0 |        148 |        784 |
+| CMake       |         18 |        626 |          0 |        137 |        763 |
+| Makefile    |          3 |        450 |        180 |        204 |        834 |
+| CUDA C++    |          2 |        409 |         38 |        122 |        569 |
+| Docker      |          1 |         17 |         24 |         10 |         51 |
+| Markdown    |          1 |          7 |          0 |          1 |          8 |
+| TypeScript  |          3 |          6 |          0 |          3 |          9 |
++-------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |         60 |     86,843 |        763 |     23,505 |    111,111 |
+| . (Files)                                                                                          |          2 |         24 |         24 |         11 |         59 |
+| build                                                                                              |         37 |     85,915 |        372 |     23,261 |    109,548 |
+| build (Files)                                                                                      |          3 |        770 |         53 |        206 |      1,029 |
+| build\CMakeFiles                                                                                   |         18 |     84,565 |        192 |     22,841 |    107,598 |
+| build\CMakeFiles (Files)                                                                           |          3 |      1,218 |         40 |         57 |      1,315 |
+| build\CMakeFiles\3.28.3                                                                            |         15 |     83,347 |        152 |     22,784 |    106,283 |
+| build\CMakeFiles\3.28.3 (Files)                                                                    |          4 |        193 |          0 |         61 |        254 |
+| build\CMakeFiles\3.28.3\CompilerIdC                                                                |          1 |        670 |         61 |        150 |        881 |
+| build\CMakeFiles\3.28.3\CompilerIdCUDA                                                             |          9 |     81,825 |         28 |     22,425 |    104,278 |
+| build\CMakeFiles\3.28.3\CompilerIdCUDA (Files)                                                     |          1 |        337 |         28 |        104 |        469 |
+| build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp                                                         |          8 |     81,488 |          0 |     22,321 |    103,809 |
+| build\CMakeFiles\3.28.3\CompilerIdCXX                                                              |          1 |        659 |         63 |        148 |        870 |
+| build\src                                                                                          |         10 |        350 |         71 |        126 |        547 |
+| build\src (Files)                                                                                  |          2 |        261 |         71 |        100 |        432 |
+| build\src\CMakeFiles                                                                               |          8 |         89 |          0 |         26 |        115 |
+| build\src\CMakeFiles (Files)                                                                       |          1 |         12 |          0 |          5 |         17 |
+| build\src\CMakeFiles\cuda_objs.dir                                                                 |          3 |         27 |          0 |         10 |         37 |
+| build\src\CMakeFiles\ml_framework.dir                                                              |          4 |         50 |          0 |         11 |         61 |
+| build\tests                                                                                        |          6 |        230 |         56 |         88 |        374 |
+| build\tests (Files)                                                                                |          2 |        180 |         56 |         73 |        309 |
+| build\tests\CMakeFiles                                                                             |          4 |         50 |          0 |         15 |         65 |
+| build\tests\CMakeFiles (Files)                                                                     |          1 |         12 |          0 |          5 |         17 |
+| build\tests\CMakeFiles\my_cuda_tests.dir                                                           |          3 |         38 |          0 |         10 |         48 |
+| include                                                                                            |          9 |        218 |         25 |         41 |        284 |
+| include\ml_framework                                                                               |          9 |        218 |         25 |         41 |        284 |
+| src                                                                                                |          8 |        475 |        120 |        103 |        698 |
+| tests                                                                                              |          4 |        211 |        222 |         89 |        522 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| filename                                                                                           | language    | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| d:\Github\ml-library\Dockerfile                                                                    | Docker      |         17 |         24 |         10 |         51 |
+| d:\Github\ml-library\README.md                                                                     | Markdown    |          7 |          0 |          1 |          8 |
+| d:\Github\ml-library\build\CMakeCache.txt                                                          | CMake Cache |        636 |          0 |        148 |        784 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCCompiler.cmake                                  | CMake       |         57 |          0 |         18 |         75 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCUDACompiler.cmake                               | CMake       |         60 |          0 |         17 |         77 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake                                | CMake       |         66 |          0 |         20 |         86 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeSystem.cmake                                     | CMake       |         10 |          0 |          6 |         16 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\CMakeCUDACompilerId.cu                 | CUDA C++    |        337 |         28 |        104 |        469 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cpp1.ii        | C++         |     23,626 |          0 |     11,471 |     35,097 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cpp4.ii        | C++         |     22,352 |          0 |     10,832 |     33,184 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.c      | C           |         27 |          0 |          9 |         36 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.cpp    | C++         |     35,353 |          0 |          4 |     35,357 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.stub.c | C           |         14 |          0 |          2 |         16 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.fatbin.c       | C           |         60 |          0 |          1 |         61 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\a_dlink.fatbin.c                   | C           |         55 |          0 |          1 |         56 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\a_dlink.reg.c                      | C           |          1 |          0 |          1 |          2 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCXX\CMakeCXXCompilerId.cpp                  | C++         |        659 |         63 |        148 |        870 |
+| d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdC\CMakeCCompilerId.c                        | C           |        670 |         61 |        150 |        881 |
+| d:\Github\ml-library\build\CMakeFiles\CMakeConfigureLog.yaml                                       | YAML        |      1,043 |         40 |         46 |      1,129 |
+| d:\Github\ml-library\build\CMakeFiles\CMakeDirectoryInformation.cmake                              | CMake       |         12 |          0 |          5 |         17 |
+| d:\Github\ml-library\build\CMakeFiles\Makefile.cmake                                               | CMake       |        163 |          0 |          6 |        169 |
+| d:\Github\ml-library\build\Makefile                                                                | Makefile    |         83 |         53 |         47 |        183 |
+| d:\Github\ml-library\build\cmake_install.cmake                                                     | CMake       |         51 |          0 |         11 |         62 |
+| d:\Github\ml-library\build\src\CMakeFiles\CMakeDirectoryInformation.cmake                          | CMake       |         12 |          0 |          5 |         17 |
+| d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\DependInfo.cmake                           | CMake       |         17 |          0 |          7 |         24 |
+| d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\cmake_clean.cmake                          | CMake       |          8 |          0 |          2 |         10 |
+| d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\compiler_depend.ts                         | TypeScript  |          2 |          0 |          1 |          3 |
+| d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\DependInfo.cmake                        | CMake       |         23 |          0 |          7 |         30 |
+| d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\cmake_clean.cmake                       | CMake       |         22 |          0 |          2 |         24 |
+| d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\cmake_clean_target.cmake                | CMake       |          3 |          0 |          1 |          4 |
+| d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\compiler_depend.ts                      | TypeScript  |          2 |          0 |          1 |          3 |
+| d:\Github\ml-library\build\src\Makefile                                                            | Makefile    |        224 |         71 |         92 |        387 |
+| d:\Github\ml-library\build\src\cmake_install.cmake                                                 | CMake       |         37 |          0 |          8 |         45 |
+| d:\Github\ml-library\build\tests\CMakeFiles\CMakeDirectoryInformation.cmake                        | CMake       |         12 |          0 |          5 |         17 |
+| d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\DependInfo.cmake                     | CMake       |         20 |          0 |          7 |         27 |
+| d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\cmake_clean.cmake                    | CMake       |         16 |          0 |          2 |         18 |
+| d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\compiler_depend.ts                   | TypeScript  |          2 |          0 |          1 |          3 |
+| d:\Github\ml-library\build\tests\Makefile                                                          | Makefile    |        143 |         56 |         65 |        264 |
+| d:\Github\ml-library\build\tests\cmake_install.cmake                                               | CMake       |         37 |          0 |          8 |         45 |
+| d:\Github\ml-library\include\ml_framework\autograd.h                                               | C++         |          0 |          1 |          1 |          2 |
+| d:\Github\ml-library\include\ml_framework\config.h                                                 | C++         |         68 |          9 |         10 |         87 |
+| d:\Github\ml-library\include\ml_framework\linear.h                                                 | C++         |         23 |          4 |          4 |         31 |
+| d:\Github\ml-library\include\ml_framework\module.h                                                 | C++         |         32 |          4 |          5 |         41 |
+| d:\Github\ml-library\include\ml_framework\mse_loss.h                                               | C++         |          4 |          2 |          0 |          6 |
+| d:\Github\ml-library\include\ml_framework\relu.h                                                   | C++         |         20 |          0 |          6 |         26 |
+| d:\Github\ml-library\include\ml_framework\suppress_warnings.h                                      | C++         |         10 |          1 |          3 |         14 |
+| d:\Github\ml-library\include\ml_framework\tensor.h                                                 | C++         |         56 |          2 |         11 |         69 |
+| d:\Github\ml-library\include\ml_framework\utils.h                                                  | C++         |          5 |          2 |          1 |          8 |
+| d:\Github\ml-library\src\autograd.cpp                                                              | C++         |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\src\kernel.cu                                                                 | CUDA C++    |         72 |         10 |         18 |        100 |
+| d:\Github\ml-library\src\linear.cpp                                                                | C++         |         28 |         12 |          8 |         48 |
+| d:\Github\ml-library\src\module.cpp                                                                | C++         |         74 |         56 |         19 |        149 |
+| d:\Github\ml-library\src\mse_loss.cpp                                                              | C++         |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\src\relu.cpp                                                                  | C++         |         28 |          0 |          6 |         34 |
+| d:\Github\ml-library\src\tensor.cpp                                                                | C++         |        273 |         42 |         49 |        364 |
+| d:\Github\ml-library\src\utils.cpp                                                                 | C++         |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\tests\main.cpp                                                                | C++         |          7 |          0 |          1 |          8 |
+| d:\Github\ml-library\tests\test_autograd.cpp                                                       | C++         |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\tests\test_module.cpp                                                         | C++         |         34 |        187 |         44 |        265 |
+| d:\Github\ml-library\tests\test_tensor.cpp                                                         | C++         |        170 |         35 |         43 |        248 |
+| Total                                                                                              |             |     86,843 |        763 |     23,505 |    111,111 |
++----------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+

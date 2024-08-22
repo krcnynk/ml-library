@@ -15,11 +15,11 @@ set_target_properties(cuda_objs PROPERTIES
 add_library(ml_framework STATIC
     tensor.cpp
     autograd.cpp
-    module.cpp
-    linear.cpp
-    relu.cpp
-    mse_loss.cpp
-    utils.cpp
+    # module.cpp
+    # linear.cpp
+    # relu.cpp
+    # mse_loss.cpp
+    # utils.cpp
     $<TARGET_OBJECTS:cuda_objs>
 )
 set(MY_DEBUG_OPTIONS "-ggdb;-O0;-pedantic-errors;-Wall;-Weffc++;-Wextra;-Wconversion;-Wsign-conversion;")

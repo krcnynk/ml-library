@@ -1,0 +1,55 @@
+Date : 2024-08-19 02:07:15
+Directory : d:\Github\ml-library
+Total : 23 files,  945 codes, 380 comments, 251 blanks, all 1576 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         20 |        849 |        346 |        222 |      1,417 |
+| CUDA C++ |          1 |         72 |         10 |         18 |        100 |
+| Docker   |          1 |         17 |         24 |         10 |         51 |
+| Markdown |          1 |          7 |          0 |          1 |          8 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                          | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                             |         23 |        945 |        380 |        251 |      1,576 |
+| . (Files)                                                     |          2 |         24 |         24 |         11 |         59 |
+| include                                                       |          9 |        214 |         31 |         47 |        292 |
+| include\ml_framework                                          |          9 |        214 |         31 |         47 |        292 |
+| src                                                           |          8 |        492 |        107 |        104 |        703 |
+| tests                                                         |          4 |        215 |        218 |         89 |        522 |
++---------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                      | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\Github\ml-library\Dockerfile                               | Docker   |         17 |         24 |         10 |         51 |
+| d:\Github\ml-library\README.md                                | Markdown |          7 |          0 |          1 |          8 |
+| d:\Github\ml-library\include\ml_framework\autograd.h          | C++      |          0 |          1 |          1 |          2 |
+| d:\Github\ml-library\include\ml_framework\config.h            | C++      |         68 |          9 |         10 |         87 |
+| d:\Github\ml-library\include\ml_framework\linear.h            | C++      |         25 |          2 |          4 |         31 |
+| d:\Github\ml-library\include\ml_framework\module.h            | C++      |         29 |          4 |          6 |         39 |
+| d:\Github\ml-library\include\ml_framework\mse_loss.h          | C++      |          4 |          2 |          0 |          6 |
+| d:\Github\ml-library\include\ml_framework\relu.h              | C++      |         17 |          1 |          6 |         24 |
+| d:\Github\ml-library\include\ml_framework\suppress_warnings.h | C++      |         10 |          1 |          3 |         14 |
+| d:\Github\ml-library\include\ml_framework\tensor.h            | C++      |         56 |          9 |         16 |         81 |
+| d:\Github\ml-library\include\ml_framework\utils.h             | C++      |          5 |          2 |          1 |          8 |
+| d:\Github\ml-library\src\autograd.cpp                         | C++      |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\src\kernel.cu                            | CUDA C++ |         72 |         10 |         18 |        100 |
+| d:\Github\ml-library\src\linear.cpp                           | C++      |         32 |          9 |          9 |         50 |
+| d:\Github\ml-library\src\module.cpp                           | C++      |         90 |         46 |         21 |        157 |
+| d:\Github\ml-library\src\mse_loss.cpp                         | C++      |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\src\relu.cpp                             | C++      |         24 |          1 |          4 |         29 |
+| d:\Github\ml-library\src\tensor.cpp                           | C++      |        274 |         41 |         49 |        364 |
+| d:\Github\ml-library\src\utils.cpp                            | C++      |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\tests\main.cpp                           | C++      |          7 |          0 |          1 |          8 |
+| d:\Github\ml-library\tests\test_autograd.cpp                  | C++      |          0 |          0 |          1 |          1 |
+| d:\Github\ml-library\tests\test_module.cpp                    | C++      |         38 |        183 |         44 |        265 |
+| d:\Github\ml-library\tests\test_tensor.cpp                    | C++      |        170 |         35 |         43 |        248 |
+| Total                                                         |          |        945 |        380 |        251 |      1,576 |
++---------------------------------------------------------------+----------+------------+------------+------------+------------+
