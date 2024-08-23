@@ -1,37 +1,28 @@
 #include "autograd.h"
 #include <stdexcept>
-
+#include "config.h"
 namespace ml_framework
 {
-    std::shared_ptr<Tensor> AddOperation::forward(const std::vector<std::shared_ptr<Tensor>> &inputs)
+    Tensor AddOperation::forward(const Tensor &a, const Tensor &b)
     {
-        if (inputs.size() != 2)
-            throw std::runtime_error("AddOperation expects exactly two inputs.");
+        if (a.shape() != b.shape())
+        {
+            throw std::runtime_error("Tensor m_shapes must match for addition.");
+        }
 
-        const auto &a = inputs[0];
-        const auto &b = inputs[1];
-
-        if (a->shape() != b->shape())
-            throw std::runtime_error("Tensors must have the same shape for addition.");
-
-        std::shared_ptr<Tensor> result_tensor = std::make_shared<Tensor>(a->shape());
+        Tensor result_tensor(a.m_shape, a.h_data.get());
         const float alpha = 1.0f;
-        cublasStatus_t status = cublasSaxpy(a->cublas_handle, static_cast<int>(a->size()), &alpha, b->device_data(), 1, result_tensor->device_data(), 1);
+        cublasStatus_t status = cublasSaxpy(result_tensor.cublas_handle, static_cast<int>(a.size()), &alpha, b.device_data(), 1, result_tensor.device_data(), 1);
         CHECK_CUBLAS_STATUS(status);
-        result_tensor->transferDataToHost();
+        result_tensor.transferDataToHost();
         return result_tensor;
     }
 
-    std::vector<std::shared_ptr<Tensor>> AddOperation::backward(const std::shared_ptr<Tensor> &grad_output)
+    std::vector<Tensor> AddOperation::backward(const std::shared_ptr<Tensor> &grad_output)
     {
-        // Compute gradients for addition
-        std::shared_ptr<Tensor> grad_a = std::make_shared<Tensor>(grad_output->shape());
-        std::shared_ptr<Tensor> grad_b = std::make_shared<Tensor>(grad_output->shape());
-
-        // Gradients for addition
-        // grad_a->data = grad_output->data;
-        // grad_b->data = grad_output->data;
-
-        return std::vector<std::shared_ptr<Tensor>>{grad_a, grad_b};
+        // // addition pass gradients as is
+        // return std::vector<Tensor>{
+        //     Tensor(grad_output->m_shape, grad_output->h_data.get()),
+        //     Tensor(grad_output->m_shape, grad_output->h_data.get())};
     }
 }

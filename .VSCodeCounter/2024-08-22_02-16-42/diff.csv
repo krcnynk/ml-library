@@ -1,0 +1,44 @@
+"filename", "language", "C++", "Makefile", "CMake", "TypeScript", "CUDA C++", "C", "CMake Cache", "YAML", "comment", "blank", "total"
+"d:\Github\ml-library\build\CMakeCache.txt", "CMake Cache", 0, 0, 0, 0, 0, 0, -636, 0, 0, -148, -784
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCCompiler.cmake", "CMake", 0, 0, -57, 0, 0, 0, 0, 0, 0, -18, -75
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCUDACompiler.cmake", "CMake", 0, 0, -60, 0, 0, 0, 0, 0, 0, -17, -77
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeCXXCompiler.cmake", "CMake", 0, 0, -66, 0, 0, 0, 0, 0, 0, -20, -86
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CMakeSystem.cmake", "CMake", 0, 0, -10, 0, 0, 0, 0, 0, 0, -6, -16
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\CMakeCUDACompilerId.cu", "CUDA C++", 0, 0, 0, 0, -337, 0, 0, 0, -28, -104, -469
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cpp1.ii", "C++", -23626, 0, 0, 0, 0, 0, 0, 0, 0, -11471, -35097
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cpp4.ii", "C++", -22352, 0, 0, 0, 0, 0, 0, 0, 0, -10832, -33184
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.c", "C", 0, 0, 0, 0, 0, -27, 0, 0, 0, -9, -36
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.cpp", "C++", -35353, 0, 0, 0, 0, 0, 0, 0, 0, -4, -35357
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.cudafe1.stub.c", "C", 0, 0, 0, 0, 0, -14, 0, 0, 0, -2, -16
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\CMakeCUDACompilerId.fatbin.c", "C", 0, 0, 0, 0, 0, -60, 0, 0, 0, -1, -61
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\a_dlink.fatbin.c", "C", 0, 0, 0, 0, 0, -55, 0, 0, 0, -1, -56
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCUDA\tmp\a_dlink.reg.c", "C", 0, 0, 0, 0, 0, -1, 0, 0, 0, -1, -2
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdCXX\CMakeCXXCompilerId.cpp", "C++", -659, 0, 0, 0, 0, 0, 0, 0, -63, -148, -870
+"d:\Github\ml-library\build\CMakeFiles\3.28.3\CompilerIdC\CMakeCCompilerId.c", "C", 0, 0, 0, 0, 0, -670, 0, 0, -61, -150, -881
+"d:\Github\ml-library\build\CMakeFiles\CMakeConfigureLog.yaml", "YAML", 0, 0, 0, 0, 0, 0, 0, -1043, -40, -46, -1129
+"d:\Github\ml-library\build\CMakeFiles\CMakeDirectoryInformation.cmake", "CMake", 0, 0, -12, 0, 0, 0, 0, 0, 0, -5, -17
+"d:\Github\ml-library\build\CMakeFiles\Makefile.cmake", "CMake", 0, 0, -163, 0, 0, 0, 0, 0, 0, -6, -169
+"d:\Github\ml-library\build\Makefile", "Makefile", 0, -83, 0, 0, 0, 0, 0, 0, -53, -47, -183
+"d:\Github\ml-library\build\cmake_install.cmake", "CMake", 0, 0, -51, 0, 0, 0, 0, 0, 0, -11, -62
+"d:\Github\ml-library\build\src\CMakeFiles\CMakeDirectoryInformation.cmake", "CMake", 0, 0, -12, 0, 0, 0, 0, 0, 0, -5, -17
+"d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\DependInfo.cmake", "CMake", 0, 0, -17, 0, 0, 0, 0, 0, 0, -7, -24
+"d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\cmake_clean.cmake", "CMake", 0, 0, -8, 0, 0, 0, 0, 0, 0, -2, -10
+"d:\Github\ml-library\build\src\CMakeFiles\cuda_objs.dir\compiler_depend.ts", "TypeScript", 0, 0, 0, -2, 0, 0, 0, 0, 0, -1, -3
+"d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\DependInfo.cmake", "CMake", 0, 0, -18, 0, 0, 0, 0, 0, 0, -7, -25
+"d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\cmake_clean.cmake", "CMake", 0, 0, -12, 0, 0, 0, 0, 0, 0, -2, -14
+"d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\cmake_clean_target.cmake", "CMake", 0, 0, -3, 0, 0, 0, 0, 0, 0, -1, -4
+"d:\Github\ml-library\build\src\CMakeFiles\ml_framework.dir\compiler_depend.ts", "TypeScript", 0, 0, 0, -2, 0, 0, 0, 0, 0, -1, -3
+"d:\Github\ml-library\build\src\Makefile", "Makefile", 0, -134, 0, 0, 0, 0, 0, 0, -56, -62, -252
+"d:\Github\ml-library\build\src\cmake_install.cmake", "CMake", 0, 0, -37, 0, 0, 0, 0, 0, 0, -8, -45
+"d:\Github\ml-library\build\tests\CMakeFiles\CMakeDirectoryInformation.cmake", "CMake", 0, 0, -12, 0, 0, 0, 0, 0, 0, -5, -17
+"d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\DependInfo.cmake", "CMake", 0, 0, -19, 0, 0, 0, 0, 0, 0, -7, -26
+"d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\cmake_clean.cmake", "CMake", 0, 0, -14, 0, 0, 0, 0, 0, 0, -2, -16
+"d:\Github\ml-library\build\tests\CMakeFiles\my_cuda_tests.dir\compiler_depend.ts", "TypeScript", 0, 0, 0, -2, 0, 0, 0, 0, 0, -1, -3
+"d:\Github\ml-library\build\tests\Makefile", "Makefile", 0, -125, 0, 0, 0, 0, 0, 0, -53, -59, -237
+"d:\Github\ml-library\build\tests\cmake_install.cmake", "CMake", 0, 0, -37, 0, 0, 0, 0, 0, 0, -8, -45
+"d:\Github\ml-library\include\ml_framework\autograd.h", "C++", -25, 0, 0, 0, 0, 0, 0, 0, -14, -5, -44
+"d:\Github\ml-library\include\ml_framework\tensor.h", "C++", 5, 0, 0, 0, 0, 0, 0, 0, 2, 1, 8
+"d:\Github\ml-library\src\autograd.cpp", "C++", 22, 0, 0, 0, 0, 0, 0, 0, 4, 6, 32
+"d:\Github\ml-library\src\linear.cpp", "C++", -7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0
+"d:\Github\ml-library\src\tensor.cpp", "C++", 13, 0, 0, 0, 0, 0, 0, 0, 54, 12, 79
+"Total", "-", -81982, -342, -608, -6, -337, -827, -636, -1043, -301, -23211, -109293

@@ -20,7 +20,6 @@ namespace ml_framework
         return static_cast<size_t>(total_elements);
     }
 
-    Tensor::Tensor() : m_shape(0), h_data(nullptr) {}
     std::ostream &operator<<(std::ostream &os, const Tensor &tensor)
     {
         std::vector<size_t> v_size{tensor.size()};
@@ -47,46 +46,11 @@ namespace ml_framework
         }
         return os;
     }
-    Tensor::Tensor(const std::vector<int> &shape, const float *data)
-        : m_shape(shape), h_data(std::make_shared<float[]>(size()))
-    {
-        initializeCuBLAS();
-        // this->h_data = std::make_shared<float[]>(size());
-        std::memcpy(this->h_data.get(), data, sizeof(*data) * static_cast<long unsigned int>(size()));
-        // Initialize CUDA resources
-        allocateDeviceMemory();
-    }
 
-    Tensor::Tensor(const Tensor &tensor)
-        : std::enable_shared_from_this<Tensor>(), m_shape(tensor.shape()), h_data(std::make_shared<float[]>(tensor.size())),
-          grad(tensor.grad ? std::make_shared<Tensor>(*tensor.grad) : nullptr),
-          backward_fn(tensor.backward_fn)
-    {
-        initializeCuBLAS();
-        // h_data = std::make_shared<float[]>(size());
-        std::memcpy(this->h_data.get(), tensor.h_data.get(), sizeof(*(h_data.get())) * static_cast<long unsigned int>(size()));
-
-        // Initialize CUDA resources
-        allocateDeviceMemory();
-
-        if (backward_fn)
-        {
-            // This lambda creates a new backward_fn capturing the current tensor
-            backward_fn = [this, original_grad = grad ? *grad : Tensor()]()
-            {
-                if (grad == nullptr)
-                    grad = std::make_shared<Tensor>(m_shape, 0.0f);
-
-                if (original_grad.grad)
-                {
-                    *grad = *grad + *original_grad.grad; // Handle gradients
-                }
-            };
-        }
-    }
+    Tensor::Tensor() : m_shape(0), h_data(nullptr), d_data(nullptr), grad(nullptr) {}
 
     Tensor::Tensor(const std::vector<int> &shape)
-        : m_shape(shape), h_data(std::make_shared<float[]>(size()))
+        : m_shape(shape), h_data(std::make_unique<float[]>(size())), d_data(std::make_unique<float[]>(size())), grad(std::make_shared<Tensor>())
     {
         initializeCuBLAS();
         // FIXME: Need recap here
@@ -96,20 +60,52 @@ namespace ml_framework
         std::normal_distribution<float> dist(0.0, std::sqrt(2.0f / static_cast<float>(size())));
         // std::uniform_real_distribution<> dis(-0.001, 0.001);
 
-        // h_data = std::make_shared<float[]>(size());
-        // std::fill_n(h_data, size(), 1.0f);
-        std::generate(h_data.get(), h_data.get() + size(), [&]()
-                      { return dist(gen); });
+        std::fill_n(h_data.get(), size(), 0.0f);
+        // std::generate(h_data.get(), h_data.get() + size(), [&]()
+        //               { return dist(gen); });
         allocateDeviceMemory();
+
+        grad->m_shape = shape;
+        grad->h_data = std::make_unique<float[]>(size());
+        grad->grad = nullptr;
+        std::fill_n(grad->h_data.get(), size(), 0.0f);
+        grad->allocateDeviceMemory();
     }
 
     Tensor::Tensor(const std::vector<int> &shape, float init)
-        : m_shape(shape), h_data(std::make_shared<float[]>(size()))
+        : m_shape(shape), h_data(std::make_unique<float[]>(size())), d_data(std::make_unique<float[]>(size())), grad(std::make_shared<Tensor>(shape))
     {
         initializeCuBLAS();
-        // h_data = std::make_shared<float[]>(size());
         std::fill_n(h_data.get(), size(), init);
         allocateDeviceMemory();
+    }
+
+    Tensor::Tensor(const std::vector<int> &shape, const float *data)
+        : m_shape(shape), h_data(std::make_unique<float[]>(size())), d_data(std::make_unique<float[]>(size())), grad(std::make_shared<Tensor>(shape))
+    {
+        initializeCuBLAS();
+        std::memcpy(this->h_data.get(), data, sizeof(*data) * static_cast<long unsigned int>(size()));
+        allocateDeviceMemory();
+    }
+
+    // Tensor::Tensor(const Tensor &tensor)
+    //     : m_shape(tensor.m_shape), h_data(std::make_unique<float[]>(tensor.size())), d_data(std::make_unique<float[]>(tensor.size())),
+    //       grad(std::make_shared<Tensor>(tensor.m_shape, tensor.grad->h_data.get())), backward_fn(tensor.backward_fn)
+    // {
+    //     initializeCuBLAS();
+    //     std::memcpy(this->h_data.get(), tensor.h_data.get(), sizeof(*(h_data.get())) * static_cast<long unsigned int>(size()));
+    //     allocateDeviceMemory();
+    // }
+
+    // Move Constructor
+    Tensor::Tensor(Tensor &&other) noexcept
+        : m_shape(std::move(other.m_shape)),
+          h_data(std::move(other.h_data)),
+          d_data(std::move(other.d_data)),
+          grad(std::move(other.grad)),
+          backward_fn(std::move(other.backward_fn))
+    {
+        // Transfer ownership
     }
 
     // TODO: various member functions/constructors need to be done
@@ -157,12 +153,12 @@ namespace ml_framework
 
     float *Tensor::device_data() const
     {
-        return d_data;
+        return d_data.get();
     }
 
     float *Tensor::device_data()
     {
-        return d_data;
+        return d_data.get();
     }
 
     float Tensor::sum() const
@@ -181,181 +177,179 @@ namespace ml_framework
 
     Tensor Tensor::operator+(const Tensor &other) const
     {
-        if (m_shape != other.m_shape)
-        {
-            throw std::runtime_error("Tensor m_shapes must match for addition.");
-        }
         // Create the AddOperation
         auto add_operation = std::make_shared<AddOperation>();
         // Forward pass
-        std::vector<std::shared_ptr<Tensor>> forward_input;
-        forward_input.push_back(std::const_pointer_cast<Tensor>(shared_from_this()));
-        forward_input.push_back(std::const_pointer_cast<Tensor>(other.shared_from_this()));
+        Tensor result_tensor = add_operation->forward(*this, other);
         
-        auto result_tensor = add_operation->forward(forward_input);
         // Define the backward function
-        result_tensor->backward_fn = [this, &other, result_tensor, add_operation]()
-        {
-            // Compute gradients using the AddOperation's backward function
-            auto grad_output = result_tensor->grad ? result_tensor->grad : std::make_shared<Tensor>(this->m_shape, 0.0f);
-
-            // Call backward to get gradients
-            auto grads = add_operation->backward(grad_output);
-
-            if (this->grad == nullptr)
-                this->grad = std::make_shared<Tensor>(this->m_shape, 0.0f);
-            if (other.grad == nullptr)
-                other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
-
-            // Accumulate gradients
-            *this->grad = *this->grad + *grads[0];
-            *other.grad = *other.grad + *grads[1];
-        };
-
-        return *result_tensor;
-    }
-
-    Tensor Tensor::operator-(const Tensor &other) const
-    {
-        if (m_shape != other.m_shape)
-        {
-            throw std::runtime_error("Tensor m_shapes must match for addition.");
-        }
-
-        Tensor result_tensor(*this);
-        const float alpha = -1.0f;
-
-        cublasStatus_t status = cublasSaxpy(cublas_handle, static_cast<int>(this->size()), &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
-        CHECK_CUBLAS_STATUS(status);
-        result_tensor.transferDataToHost();
-
-        // // backward function for autograd defined here
-        // result_tensor.backward_fn = [this, &other, &result_tensor]()
+        // result_tensor.backward_fn = [this, &other, &result_tensor, add_operation]()
         // {
-        //     if (this->grad == nullptr)
-        //         this->grad = std::make_shared<Tensor>(this->m_shape, 0.0f);
-        //     if (other.grad == nullptr)
-        //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
-        //     // if (result.grad == nullptr)
-        //     //     result.grad = std::make_shared<Tensor>(result.m_shape, 0.0f);
+        //     // Call backward to get gradients
+        //     std::vector<Tensor> grads = add_operation->backward(result_tensor.grad);
 
-        //     *this->grad = *this->grad + *result_tensor.grad; // Gradient for this tensor
-        //     *other.grad = *other.grad - *result_tensor.grad; // Gradient for other tensor
+        //     // Accumulate gradients
+        //     if (this->grad == nullptr || other.grad == nullptr)
+        //     {
+        //         throw std::runtime_error("Gradient not initialized before accumulation.");
+        //     }
+        //     *this->grad = add_operation->forward(*this->grad, grads[0]);
+        //     *other.grad = add_operation->forward(*other.grad, grads[1]);
         // };
 
         return result_tensor;
     }
 
-    Tensor Tensor::operator*(const Tensor &other) const
+    // Tensor Tensor::operator-(const Tensor &other) const
+    // {
+    //     if (m_shape != other.m_shape)
+    //     {
+    //         throw std::runtime_error("Tensor m_shapes must match for addition.");
+    //     }
+
+    //     Tensor result_tensor(this->m_shape,this->h_data);
+    //     const float alpha = -1.0f;
+
+    //     cublasStatus_t status = cublasSaxpy(cublas_handle, static_cast<int>(this->size()), &alpha, other.device_data(), 1, result_tensor.device_data(), 1);
+    //     CHECK_CUBLAS_STATUS(status);
+    //     result_tensor.transferDataToHost();
+
+    //     // // backward function for autograd defined here
+    //     // result_tensor.backward_fn = [this, &other, &result_tensor]()
+    //     // {
+    //     //     if (this->grad == nullptr)
+    //     //         this->grad = std::make_shared<Tensor>(this->m_shape, 0.0f);
+    //     //     if (other.grad == nullptr)
+    //     //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
+    //     //     // if (result.grad == nullptr)
+    //     //     //     result.grad = std::make_shared<Tensor>(result.m_shape, 0.0f);
+
+    //     //     *this->grad = *this->grad + *result_tensor.grad; // Gradient for this tensor
+    //     //     *other.grad = *other.grad - *result_tensor.grad; // Gradient for other tensor
+    //     // };
+
+    //     return result_tensor;
+    // }
+
+    // Tensor Tensor::operator*(const Tensor &other) const
+    // {
+    //     if (m_shape != other.m_shape)
+    //     {
+    //         throw std::runtime_error("Tensor m_shapes must match for addition.");
+    //     }
+
+    //     Tensor result_tensor = Tensor(other.m_shape,other.h_data);
+    //     cudaError_t err = elementWiseMultiplyKernelWrapper(this->d_data.get(), other.d_data.get(), result_tensor.d_data.get(), static_cast<int>(this->size()));
+    //     CHECK_CUDA_ERROR(err);
+    //     result_tensor.transferDataToHost();
+
+    //     // result_tensor.backward_fn = [this, &other, &result_tensor]()
+    //     // {
+    //     //     if (this->grad == nullptr)
+    //     //         this->grad = std::make_shared<Tensor>(this->m_shape, 0.0f);
+    //     //     if (other.grad == nullptr)
+    //     //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
+
+    //     //     // Propagate gradients: dL/da = dL/dc * b and dL/db = dL/dc * a
+    //     //     *this->grad += *result_tensor.grad * other;
+    //     //     *other.grad += *result_tensor.grad * *this;
+    //     // };
+
+    //     return result_tensor;
+    // }
+
+    // Tensor operator*(float scalar, const Tensor &other)
+    // {
+    //     Tensor dummy_tensor = Tensor(other.m_shape,other.h_data);
+    //     Tensor result_tensor = Tensor(other.m_shape,other.h_data);
+    //     dummy_tensor.h_data = std::make_shared<float[]>(dummy_tensor.size());
+    //     std::fill_n(dummy_tensor.h_data.get(), dummy_tensor.size(), scalar);
+    //     // Launch the kernel
+    //     cudaError_t err = elementWiseMultiplyKernelWrapper(dummy_tensor.d_data.get(), other.d_data.get(), result_tensor.d_data.get(), static_cast<int>(dummy_tensor.size()));
+    //     CHECK_CUDA_ERROR(err);
+    //     result_tensor.transferDataToHost();
+
+    //     // result_tensor.backward_fn = [&scalar, &other, &result_tensor]()
+    //     // {
+    //     //     if (other.grad == nullptr)
+    //     //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
+
+    //     //     // Propagate gradients: dL/da = dL/dc * b and dL/db = dL/dc * a
+    //     //     *other.grad += scalar * *result_tensor.grad;
+    //     // };
+
+    //     return result_tensor;
+    // }
+
+    // Tensor Tensor::transpose() const
+    // {
+    //     std::vector<int> transposed_shape = {this->m_shape[1], this->m_shape[0]};
+    //     Tensor return_tensor = Tensor(transposed_shape, this->h_data.get());
+
+    //     for (int i = 0; i < return_tensor.m_shape[0]; ++i)
+    //     {
+    //         for (int j = 0; j < return_tensor.m_shape[1]; ++j)
+    //         {
+    //             // Transpose operation: swap rows and columns
+    //             return_tensor.h_data.get()[j * return_tensor.m_shape[0] + i] = this->h_data.get()[i * return_tensor.m_shape[1] + j];
+    //         }
+    //     }
+
+    //     return_tensor.transferDataToDevice();
+    //     return return_tensor;
+    // }
+
+    // Tensor Tensor::matmul(const Tensor &other) const
+    // {
+
+    //     if (m_shape.size() != 2 || other.m_shape.size() != 2)
+    //     {
+    //         throw std::runtime_error("Matrix multiplication requires 2D tensors.");
+    //     }
+    //     if (m_shape[1] != other.m_shape[0])
+    //     {
+    //         // printVector(this->shape());
+    //         // printVector(other.shape());
+    //         throw std::runtime_error("Matrix dimensions must align for multiplication.");
+    //     }
+
+    //     const std::vector<int> result_shape{m_shape[0], other.m_shape[1]};
+    //     Tensor result_matrix(result_shape);
+
+    //     // Perform matrix multiplication using cuBLAS
+    //     const float alpha = 1.0f;
+    //     const float beta = 0.0f;
+    //     int m = m_shape[0];       // A rows
+    //     int k = m_shape[1];       // A columns
+    //     int n = other.m_shape[1]; // B columns 5 3
+
+    //     cublasSetPointerMode(cublas_handle, CUBLAS_POINTER_MODE_HOST);
+    //     cublasStatus_t status = cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha,
+    //                                         other.d_data.get(), n, d_data.get(), k, &beta, result_matrix.d_data.get(), n);
+    //     CHECK_CUBLAS_STATUS(status);
+    //     result_matrix.transferDataToHost();
+    //     return result_matrix;
+    // }
+
+    Tensor &Tensor::operator=(Tensor &&other) noexcept
     {
-        if (m_shape != other.m_shape)
-        {
-            throw std::runtime_error("Tensor m_shapes must match for addition.");
-        }
-
-        Tensor result_tensor = Tensor(other);
-        cudaError_t err = elementWiseMultiplyKernelWrapper(this->d_data, other.d_data, result_tensor.d_data, static_cast<int>(this->size()));
-        CHECK_CUDA_ERROR(err);
-        result_tensor.transferDataToHost();
-
-        // result_tensor.backward_fn = [this, &other, &result_tensor]()
-        // {
-        //     if (this->grad == nullptr)
-        //         this->grad = std::make_shared<Tensor>(this->m_shape, 0.0f);
-        //     if (other.grad == nullptr)
-        //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
-
-        //     // Propagate gradients: dL/da = dL/dc * b and dL/db = dL/dc * a
-        //     *this->grad += *result_tensor.grad * other;
-        //     *other.grad += *result_tensor.grad * *this;
-        // };
-
-        return result_tensor;
-    }
-
-    Tensor operator*(float scalar, const Tensor &other)
-    {
-        Tensor dummy_tensor = Tensor(other);
-        Tensor result_tensor = Tensor(other);
-        dummy_tensor.h_data = std::make_shared<float[]>(dummy_tensor.size());
-        std::fill_n(dummy_tensor.h_data.get(), dummy_tensor.size(), scalar);
-        // Launch the kernel
-        cudaError_t err = elementWiseMultiplyKernelWrapper(dummy_tensor.d_data, other.d_data, result_tensor.d_data, static_cast<int>(dummy_tensor.size()));
-        CHECK_CUDA_ERROR(err);
-        result_tensor.transferDataToHost();
-
-        // result_tensor.backward_fn = [&scalar, &other, &result_tensor]()
-        // {
-        //     if (other.grad == nullptr)
-        //         other.grad = std::make_shared<Tensor>(other.m_shape, 0.0f);
-
-        //     // Propagate gradients: dL/da = dL/dc * b and dL/db = dL/dc * a
-        //     *other.grad += scalar * *result_tensor.grad;
-        // };
-
-        return result_tensor;
-    }
-
-    Tensor Tensor::transpose() const
-    {
-        std::vector<int> transposed_shape = {this->m_shape[1], this->m_shape[0]};
-        Tensor return_tensor = Tensor(transposed_shape, this->h_data.get());
-
-        for (int i = 0; i < return_tensor.m_shape[0]; ++i)
-        {
-            for (int j = 0; j < return_tensor.m_shape[1]; ++j)
-            {
-                // Transpose operation: swap rows and columns
-                return_tensor.h_data.get()[j * return_tensor.m_shape[0] + i] = this->h_data.get()[i * return_tensor.m_shape[1] + j];
-            }
-        }
-
-        return_tensor.transferDataToDevice();
-        return return_tensor;
-    }
-
-    Tensor Tensor::matmul(const Tensor &other) const
-    {
-
-        if (m_shape.size() != 2 || other.m_shape.size() != 2)
-        {
-            throw std::runtime_error("Matrix multiplication requires 2D tensors.");
-        }
-        if (m_shape[1] != other.m_shape[0])
-        {
-            // printVector(this->shape());
-            // printVector(other.shape());
-            throw std::runtime_error("Matrix dimensions must align for multiplication.");
-        }
-
-        const std::vector<int> result_shape{m_shape[0], other.m_shape[1]};
-        Tensor result_matrix(result_shape);
-
-        // Perform matrix multiplication using cuBLAS
-        const float alpha = 1.0f;
-        const float beta = 0.0f;
-        int m = m_shape[0];       // A rows
-        int k = m_shape[1];       // A columns
-        int n = other.m_shape[1]; // B columns 5 3
-
-        cublasSetPointerMode(cublas_handle, CUBLAS_POINTER_MODE_HOST);
-        cublasStatus_t status = cublasSgemm(cublas_handle, CUBLAS_OP_N, CUBLAS_OP_N, n, m, k, &alpha,
-                                            other.d_data, n, d_data, k, &beta, result_matrix.d_data, n);
-        CHECK_CUBLAS_STATUS(status);
-        result_matrix.transferDataToHost();
-        return result_matrix;
-    }
-
-    Tensor &Tensor::operator=(const Tensor &other)
-    {
+        std::cout << "move assignment op" << std::endl;
         if (this != &other)
         {
-            this->m_shape = other.shape();
-            this->h_data = std::make_shared<float[]>(other.size());
-            std::memcpy(this->h_data.get(), other.host_data(), sizeof(*this->h_data.get()) * static_cast<long unsigned int>(other.size()));
-            allocateDeviceMemory();
-        }
+            // if (this != &tensor)
+            // {
+            // Free existing resources
+            // freeDeviceMemory();
 
+            // Move resources from tensor
+            m_shape = std::move(other.m_shape);
+            h_data = std::move(other.h_data);
+            d_data = std::move(other.d_data);
+            grad = std::move(other.grad);
+            backward_fn = std::move(other.backward_fn);
+
+            // Transfer ownership
+        }
         return *this;
     }
 
@@ -373,7 +367,7 @@ namespace ml_framework
     {
         if (d_data != nullptr)
         {
-            cudaMemcpy(d_data, h_data.get(), static_cast<unsigned long>(size()) * sizeof(float), cudaMemcpyHostToDevice);
+            cudaMemcpy(d_data.get(), h_data.get(), static_cast<unsigned long>(size()) * sizeof(float), cudaMemcpyHostToDevice);
 
             cudaError_t err = cudaGetLastError();
             CHECK_CUDA_ERROR(err);
@@ -384,7 +378,7 @@ namespace ml_framework
     {
         if (d_data != nullptr)
         {
-            cudaMemcpy(h_data.get(), d_data, static_cast<unsigned long>(size()) * sizeof(float), cudaMemcpyDeviceToHost);
+            cudaMemcpy(h_data.get(), d_data.get(), static_cast<unsigned long>(size()) * sizeof(float), cudaMemcpyDeviceToHost);
 
             cudaError_t err = cudaGetLastError();
             CHECK_CUDA_ERROR(err);
@@ -404,7 +398,7 @@ namespace ml_framework
         freeDeviceMemory();
         cleanupCuBLAS();
         // delete[] h_data;
-        // h_data = nullptr;
+        h_data = nullptr;
     }
 
     void Tensor::initializeCuBLAS()
@@ -429,7 +423,8 @@ namespace ml_framework
     {
         if (d_data == nullptr)
         {
-            cudaMalloc((void **)&d_data, static_cast<unsigned long>(size()) * sizeof(float));
+            float *raw_ptr = d_data.get();
+            cudaMalloc((void **)&raw_ptr, static_cast<unsigned long>(size()) * sizeof(float));
             transferDataToDevice();
         }
     }
@@ -438,7 +433,7 @@ namespace ml_framework
     {
         if (d_data != nullptr)
         {
-            cudaFree(d_data);
+            cudaFree(d_data.get());
             d_data = nullptr;
         }
     }

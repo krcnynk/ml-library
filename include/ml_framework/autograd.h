@@ -13,19 +13,19 @@ namespace ml_framework
         virtual ~Operation() = default;
 
         // Perform the forward pass for this operation
-        virtual std::shared_ptr<Tensor> forward(const std::vector<std::shared_ptr<Tensor>> &inputs) = 0;
+        virtual Tensor forward(const Tensor &a, const Tensor &b) = 0;
         // Perform the backward pass, returning the gradients w.r.t inputs
-        virtual std::vector<std::shared_ptr<Tensor>> backward(const std::shared_ptr<Tensor> &grad_output) = 0;
+        virtual std::vector<Tensor> backward(const std::shared_ptr<Tensor> &grad_output) = 0;
     };
 
     class AddOperation : public Operation
     {
     public:
         // Override the forward pass for addition
-        std::shared_ptr<Tensor> forward(const std::vector<std::shared_ptr<Tensor>> &inputs) override;
+        Tensor forward(const Tensor &a, const Tensor &b) override;
 
         // Override the backward pass for addition
-        std::vector<std::shared_ptr<Tensor>> backward(const std::shared_ptr<Tensor> &grad_output) override;
+        std::vector<Tensor> backward(const std::shared_ptr<Tensor> &grad_output) override;
     };
 }
 

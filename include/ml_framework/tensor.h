@@ -20,14 +20,15 @@ RESTORE_WARNINGS
 
 namespace ml_framework
 {
-    class Tensor : public std::enable_shared_from_this<Tensor>
+    class Tensor
     {
     public:
         Tensor();
-        Tensor(const std::vector<int> &shape, const float *data);
-        Tensor(const Tensor &tensor);
         Tensor(const std::vector<int> &shape);
+        Tensor(const std::vector<int> &shape, const float *data);
         Tensor(const std::vector<int> &shape, float init);
+        // Tensor(const Tensor &tensor);
+        Tensor(Tensor &&tensor) noexcept;
         ~Tensor();
 
         const std::vector<int> &shape() const;
@@ -43,7 +44,7 @@ namespace ml_framework
         Tensor operator*(const Tensor &other) const;
         Tensor transpose() const;
         Tensor matmul(const Tensor &other) const;
-        Tensor &operator=(const Tensor &other);
+        Tensor &operator=(Tensor &&other) noexcept;
         friend Tensor operator*(float scalar, const Tensor &tensor);
         friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
 
@@ -58,8 +59,7 @@ namespace ml_framework
     private:
         std::vector<int> m_shape;
         std::shared_ptr<float[]> h_data;
-        // CUDA resources
-        mutable float *d_data = nullptr;     // Device pointer for data
+        mutable std::shared_ptr<float[]> d_data = nullptr;     // Device pointer for data
         static cublasHandle_t cublas_handle; // cuBLAS handle
         // Helper functions
         void allocateDeviceMemory() const;
@@ -71,8 +71,9 @@ namespace ml_framework
 
     public:
         void backward();
-        mutable std::shared_ptr<Tensor> grad = nullptr; // Store the gradient of this tensor
-        std::function<void()> backward_fn = nullptr;    // Function to backpropagate the gradient
+        std::shared_ptr<Tensor> grad = nullptr;
+        // mutable std::shared_ptr<Tensor> grad = nullptr; // Store the gradient of this tensor
+        std::function<void()> backward_fn = nullptr; // Function to backpropagate the gradient
     };
 }
 
