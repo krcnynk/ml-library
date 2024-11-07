@@ -24,8 +24,8 @@ namespace ml_framework
         // std::unique_ptr<Tensor> backward(const Tensor &input) override;
 
     private:
-        Tensor weight_; // Weight tensor
-        Tensor bias_;   // Bias tensor
+        std::shared_ptr<Tensor> weight_; // Weight tensor
+        std::shared_ptr<Tensor> bias_;   // Bias tensor
     };
 }
 

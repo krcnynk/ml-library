@@ -27,8 +27,8 @@ namespace ml_framework
         Tensor(const std::vector<int> &shape);
         Tensor(const std::vector<int> &shape, const float *data);
         Tensor(const std::vector<int> &shape, float init);
-        // Tensor(const Tensor &tensor);
-        Tensor(Tensor &&tensor) noexcept;
+        Tensor(const Tensor &tensor);
+        // Tensor(Tensor &&tensor) noexcept;
         ~Tensor();
 
         const std::vector<int> &shape() const;
@@ -39,12 +39,12 @@ namespace ml_framework
         float *device_data() const;
         float *device_data();
 
-        Tensor operator+(const Tensor &other) const;
-        Tensor operator-(const Tensor &other) const;
-        Tensor operator*(const Tensor &other) const;
+        std::unique_ptr<Tensor> operator+(const Tensor &other) const;
+        std::unique_ptr<Tensor> operator-(const Tensor &other) const;
+        std::unique_ptr<Tensor> operator*(const Tensor &other) const;
         Tensor transpose() const;
         Tensor matmul(const Tensor &other) const;
-        Tensor &operator=(Tensor &&other) noexcept;
+        Tensor &operator=(const Tensor &other);
         friend Tensor operator*(float scalar, const Tensor &tensor);
         friend std::ostream &operator<<(std::ostream &os, const Tensor &point);
 
@@ -58,22 +58,22 @@ namespace ml_framework
 
     private:
         std::vector<int> m_shape;
-        std::shared_ptr<float[]> h_data;
-        mutable std::shared_ptr<float[]> d_data = nullptr;     // Device pointer for data
+        std::unique_ptr<float[]> h_data;
+        mutable float *d_data;               // Device pointer for data
         static cublasHandle_t cublas_handle; // cuBLAS handle
         // Helper functions
         void allocateDeviceMemory() const;
         void freeDeviceMemory() const;
-        // KernelCalls
-        friend class Operation;
-        friend class AddOperation;
-        friend class MultiplyOperation;
 
     public:
         void backward();
-        std::shared_ptr<Tensor> grad = nullptr;
+        mutable std::unique_ptr<Tensor> grad;
         // mutable std::shared_ptr<Tensor> grad = nullptr; // Store the gradient of this tensor
-        std::function<void()> backward_fn = nullptr; // Function to backpropagate the gradient
+        mutable std::function<void()> backward_fn; // Function to backpropagate the gradient
+        friend class Operation;
+        friend class AddOperation;
+        friend class MultiplyOperation;
+        friend class SubOperation;
     };
 }
 
